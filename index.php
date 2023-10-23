@@ -10,6 +10,7 @@
 <body id="fundo_index">
     <!-- Header do index -->
     <?php include 'header.php'; ?>
+    
     <!-- Footer do index -->
     <?php include 'footer.php'; ?>
 </body>

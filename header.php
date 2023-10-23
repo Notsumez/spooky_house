@@ -1,8 +1,10 @@
 <nav class="navbar navbar-expand-lg" id="bg_nav">
     <div class="container">
         <!-- Logo -->
-        <img src="images/logo_fundo_transparente" width="10%" alt="">
-        <a class="navbar-brand" id="logo_header" href="index.php">Spooky House</a>
+        <a class="navbar-brand" id="logo_header" href="index.php">
+            <img src="images/halloween" width="7%" alt="Logo Spooky House"> 
+            Spooky House
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,10 +35,10 @@
                 </li>
             </ul>
             <!-- Formulário de pesquisa -->
-            <form class="d-flex" role="search">
+            <!-- <form class="d-flex" role="search">
                 <input class="form-control me-2" id="bg_form_pesquisar" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn_pesquisar" type="submit">Pesquisar</button>
-            </form>
+            </form> -->
         </div>
     </div>
 </nav>
