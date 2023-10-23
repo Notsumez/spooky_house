@@ -63,6 +63,21 @@
     src: url('../fontes/PlaypenSans-ExtraBold.ttf');
 }
 
+@font-face {
+    font-family: 'Sometype_Mono';
+    src: url('../fontes/SometypeMono-VariableFont_wght.ttf');
+}
+
+#Sometype{
+    font-family: "Sometype_Mono";
+    color: white;
+    font-size: 13pt;
+}
+
+#Sometype:hover {
+    color: #f8741d;
+}
+
 #logo_header{
     font-family: 'Playpen_Sans_Extra_bold';
     color: #f8741d;
