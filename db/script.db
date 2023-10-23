@@ -1,0 +1,161 @@
+CREATE DATABASE Spooky_House;
+use Spooky_House;
+
+CREATE TABLE Clientes(
+    id int not null auto_increment,
+    nome varchar(100) not null,
+    email varchar(120) not null,
+    cpf varchar(14) not null unique,
+    telefone int(14) not null,
+    imagem varchar(50) not null,
+    primary key(id)
+);
+
+CREATE TABLE End_clientes(
+    id int not null auto_increment,
+    logradouro varchar(70) not null,
+    numero int(6) not null,
+    cidade varchar(50) not null,
+    uf varchar(2) not null,
+    cep varchar(14) not null,
+    id_cliente int not null,
+    primary key(id),
+    foreign key(id_cliente) references Clientes(id)
+);
+
+CREATE TABLE Funcionarios(
+    id int not null auto_increment,
+    nome varchar(100) not null,
+    cpf varchar(14) not null unique,
+    email varchar(120) not null,
+    telefone int(11) not null,
+    periodo varchar(20) not null,
+    funcao varchar(34) not null,
+    nivel enum('adm','func') not null,
+    ativo bit not null,
+    imagem varchar(50) not null,
+    primary key(id)
+);
+
+CREATE TABLE Produtos(
+    id int not null auto_increment,
+    nome varchar(50) not null,
+    descricao text not null,
+    resumo varchar(100) not null,
+    preco decimal(9,2) not null,
+    quantidade int not null,
+    imagem varchar(50) not null,
+    destaque enum('Sim','Não') not null,
+    primary key(id)
+);
+
+CREATE TABLE Categorias(
+    id int not null auto_increment,
+    nome varchar(100) not null,
+    primary key(id)
+);
+
+CREATE TABLE Produtos_categorias(
+    id int not null auto_increment,
+    id_produto int not null,
+    id_categoria int not null,
+    primary key(id),
+    foreign key(id_produto) references Produtos(id),
+    foreign key(id_categoria) references Categorias(id)
+);
+
+CREATE TABLE Temas(
+    id int not null auto_increment,
+    nome varchar(100) not null,
+    primary key(id)
+);
+
+CREATE TABLE Produtos_temas(
+    id int not null auto_increment,
+    id_produto int not null,
+    id_tema int not null,
+    primary key(id),
+    foreign key(id_produto) references Produtos(id),
+    foreign key(id_tema) references Temas(id)
+);
+
+CREATE TABLE Pedidos(
+    id int not null auto_increment,
+    id_cliente int not null,
+    status varchar(20) not null,
+    data date not null,
+    primary key(id),
+    foreign key(id_cliente) references Clientes(id)
+);
+
+CREATE TABLE Item_pedido(
+    id int not null auto_increment,
+    id_pedido int not null,
+    id_produto int not null,
+    quantidade int not null,
+    primary key(id),
+    foreign key(id_pedido) references Pedidos(id),
+    foreign key(id_produto) references Produtos(id)
+);
+
+CREATE TABLE Comentarios(
+    id int not null auto_increment,
+    comentario text not null,
+    avaliacao int not null,
+    id_cliente int not null,
+    id_produto int not null,
+    primary key(id),
+    foreign key(id_cliente) references Clientes(id),
+    foreign key(id_produto) references Produtos(id)
+);
+
+CREATE TABLE Favoritos(
+    id int not null auto_increment,
+    id_cliente int not null,
+    id_produto int not null,
+    primary key(id),
+    foreign key(id_cliente) references Clientes(id),
+    foreign key(id_produto) references Produtos(id)
+);
+
+CREATE TABLE Cupons(
+    id int not null auto_increment,
+    codigo varchar(20) not null unique,
+    desconto decimal(5,2) not null,
+    validade date not null,
+    primary key(id)
+);
+
+CREATE TABLE Carrinho(
+    id int not null auto_increment,
+    id_cliente int not null,
+    id_produto int not null,
+    data_adicao date not null,
+    primary key(id),
+    foreign key(id_cliente) references Clientes(id),
+    foreign key(id_produto) references Produtos(id)
+);
+
+CREATE TABLE Pedidos_cancelados(
+    id int not null auto_increment,
+    id_pedido int not null,
+    motivo text null,
+    primary key(id),
+    foreign key(id_pedido) references Pedidos(id),
+);
+
+CREATE TABLE Login_clientes(
+    id int not null auto_increment,
+    senha varchar(26) not null,
+    id_cliente int not null,
+    primary key(id),
+    foreign key(id_cliente) references Clientes(id)
+);
+
+CREATE TABLE Login_funcionarios(
+    id int not null auto_increment,
+    senha varchar(26) not null,
+    id_func int not null,
+    primary key(id),
+    foreign key(id_func) references Funcionarios(id)
+);
