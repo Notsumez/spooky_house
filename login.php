@@ -16,7 +16,8 @@
             // Por exemplo, exibir os dados na página ou redirecionar para uma página de perfil do cliente
             
             // Inicie a sessão
-                session_start();
+            session_start();
+            session_name($cpf);
 
             // Armazena os dados do cliente na sessão
             $_SESSION['id_usuario'] = $row['id'];
@@ -31,11 +32,14 @@
                 $row = mysqli_fetch_assoc($result);
                 // Aqui você pode fazer o que quiser com os dados do funcionário
                 // Por exemplo, exibir os dados na página ou redirecionar para uma página de perfil do funcionário
-    
-                echo "Funcionário encontrado: " . $row['nome'];
+
+                // Armazena os dados do cliente na sessão
+                $_SESSION['id_usuario'] = $row['id'];
+                header('location: index.php');
             } else {
                 // CPF não encontrado em nenhuma tabela
-                echo "CPF não encontrado na base de dados.";
+                header('location: login.php?erro=s');
+                exit;
             }
         }
     }
@@ -82,5 +86,34 @@
             </p>
         </div>
     </main>
+    <!-- ==================================== MODAL ====================================== -->
+
+    <!-- código para o modal -->
+    <?php if(isset($_GET['erro']) && ($_GET['erro'] == "s")){?>
+            <script>
+                $(document).ready(function() {
+                    $('#modal_erro').modal('show');
+                });
+            </script>
+        <?php }?>  
+        <!-- Fim do modal -->
+
+    <div class="modal fade" tabindex="-1" id="modal_erro">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">ATENÇÃO !</h5>
+                    <button type="button" class="btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Senha ou CPF incorretos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+    <!-- Link para Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Link para as funções JavaScript -->
+    <script src="js/script.js"></script>
 </html>

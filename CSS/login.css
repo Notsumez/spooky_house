@@ -12,6 +12,17 @@
     animation: inflate 1.5s ease-in-out;
 }
 
+#modal_erro{
+    background: transparent;
+    backdrop-filter: blur(15px);
+}
+
+.modal-content{
+    background-color: rgb(3, 3, 3);
+    color: #f8741d;
+}
+
+
 .fundo_login{
     background: url(../images/background.jpg) no-repeat;
     background-size: cover;
