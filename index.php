@@ -1,13 +1,13 @@
 <?php
-// Verifica se o usuário está autenticado
-$autenticado = false; 
+    include 'connection/connect.php';
+    // Verifica se o usuário está autenticado
+    session_start();
 
-if (!$autenticado) {
-    header("Location: login.php"); // Redireciona para a página de login
-    exit;
-}
+    if (!isset($_SESSION['id_usuario'])) {
+        header("Location: login.php"); // Redireciona para a página de login se não houver sessão
+        exit;
+    }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

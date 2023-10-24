@@ -1,11 +1,45 @@
 <?php 
     include 'connection/connect.php';
 
-    if($_POST){
+    if ($_POST) {
         $cpf = $_POST['cpf'];
         $senha = $_POST['senha'];
+    
+        // Verificar se o CPF está na tabela Clientes
+        $query = "SELECT * FROM Clientes WHERE cpf = '$cpf'";
+        $result = mysqli_query($conn, $query);
+    
+        if (mysqli_num_rows($result) > 0) {
+            // O CPF pertence a um cliente
+            $row = mysqli_fetch_assoc($result);
+            // Aqui você pode fazer o que quiser com os dados do cliente
+            // Por exemplo, exibir os dados na página ou redirecionar para uma página de perfil do cliente
+            
+            // Inicie a sessão
+                session_start();
+
+            // Armazena os dados do cliente na sessão
+            $_SESSION['id_usuario'] = $row['id'];
+            header('location: index.php');
+        } else {
+            // O CPF não pertence a um cliente, vamos verificar se pertence a um funcionário
+            $query = "SELECT * FROM Funcionarios WHERE cpf = '$cpf'";
+            $result = mysqli_query($conn, $query);
+    
+            if (mysqli_num_rows($result) > 0) {
+                // O CPF pertence a um funcionário
+                $row = mysqli_fetch_assoc($result);
+                // Aqui você pode fazer o que quiser com os dados do funcionário
+                // Por exemplo, exibir os dados na página ou redirecionar para uma página de perfil do funcionário
+    
+                echo "Funcionário encontrado: " . $row['nome'];
+            } else {
+                // CPF não encontrado em nenhuma tabela
+                echo "CPF não encontrado na base de dados.";
+            }
+        }
     }
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
