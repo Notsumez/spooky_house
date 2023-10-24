@@ -5,10 +5,16 @@
     
 }
 
-/* ============================== HEADER =================================== */
-#bg_nav{
-    backdrop-filter: blur(15px);
+a{
+    text-decoration: none;
 }
+
+/* ============================== HEADER =================================== */
+#bg_nav {
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
 
 .btn_pesquisar {
     font-size: 1.2rem;
@@ -63,6 +69,11 @@
     src: url('../fontes/PlaypenSans-ExtraBold.ttf');
 }
 
+#logo_header{
+    font-family: 'Playpen_Sans_Extra_bold';
+    color: #f8741d;
+}
+
 @font-face {
     font-family: 'Sometype_Mono';
     src: url('../fontes/SometypeMono-VariableFont_wght.ttf');
@@ -76,13 +87,47 @@
 
 #Sometype:hover {
     color: #f8741d;
+    -webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	text-decoration: none;
 }
 
-#logo_header{
-    font-family: 'Playpen_Sans_Extra_bold';
-    color: #f8741d;
+@font-face {
+    font-family: 'Night_Pumpkin';
+    src: url('../fontes/NightPumpkind-1GpGv.ttf');
+}
+
+#Night_Pumpkin{
+    font-family: "Night_Pumpkin";
+    color: white;
+    font-size: 15pt;
 }
 
 /* ============================== Detalhes =================================== */
 
 /* ============================== FOOTER =================================== */
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #181818;
+    padding: 50px;
+}
+
+.cor_txt_footer{
+    color: grey;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 10.5pt;
+}
+
+.cor_txt_footer:hover {
+    color: #f8741d;
+    -webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	text-decoration: none;
+}
