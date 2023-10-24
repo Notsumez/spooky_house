@@ -17,7 +17,7 @@
                 <h6 id="Night_Pumpkin">Sobre Nós</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="cor_txt_footer nav-link" href="">Sobre a Spooky House</a>
+                        <a class="cor_txt_footer nav-link" href="index.php">Sobre a Spooky House</a>
                     </li>
                 </ul>
             </div>
@@ -31,13 +31,13 @@
                 <h6 id="Night_Pumpkin">Redes Sociais</h6>
                 <div class="d-flex" style="flex-direction: column;">
                     <a href="#">
-                        <img width="30px" class="p-1" src="images/facebook_logo.svg" alt="Logo Facebook">
+                        <img width="30px" class="p-1" src="images/Logos/facebook_logo.svg" alt="Logo Facebook">
                     </a>
                     <a href="#">
-                        <img width="30px" class="p-1" src="images/twitter_logo.svg" alt="Logo Twitter">
+                        <img width="30px" class="p-1" src="images/logos/twitter_logo.svg" alt="Logo Twitter">
                     </a>
                     <a href="#">
-                        <img width="30px" class="p-1" src="images/instagram_logo.svg" alt="Logo Instagram">
+                        <img width="30px" class="p-1" src="images/logos/instagram_logo.svg" alt="Logo Instagram">
                     </a>
                 </div>
             </div>

@@ -24,6 +24,7 @@ a{
     object-fit: cover;
     mix-blend-mode: soft-light;
     opacity: .5;
+    z-index: -1;
 }
 /* ============================== HEADER =================================== */
 #bg_nav {
