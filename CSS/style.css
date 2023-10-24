@@ -15,6 +15,13 @@ a{
     transition: background-color 0.3s ease;
 }
 
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #181818;
+}
 
 .btn_pesquisar {
     font-size: 1.2rem;
@@ -111,10 +118,6 @@ a{
 
 /* ============================== FOOTER =================================== */
 footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     background-color: #181818;
     padding: 50px;
 }
