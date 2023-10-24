@@ -50,13 +50,13 @@
                     $_SESSION['Login'] = 'Spooky';
                     header('location: index.php');
                 } else {
-                    echo 'Senha incorreta';
+                    header('location: login.php?erro=s');
                 }
             } else {
-                echo 'Senha não encontrada no banco de dados';
+                header('location: login.php?erro=s');
             }
         }else{
-            echo 'cpf incorreto';
+            header('location: login.php?erro=s');
         }
     }
 ?>

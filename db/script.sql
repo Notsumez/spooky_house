@@ -264,9 +264,9 @@ INSERT INTO Pedidos_cancelados (id_pedido, motivo) VALUES
 
 -- Inserir dados na tabela Login_clientes
 INSERT INTO Login_clientes (senha, id_cliente) VALUES
-('123', 1),
-('456', 2),
-('789', 3);
+('Cli1202cb962Spooky-827cc', 1),
+('Cli1202cb962Spooky-827cc', 2),
+('Cli1202cb962Spooky-827cc', 3);
 
 -- Inserir dados na tabela Login_funcionarios
 INSERT INTO Login_funcionarios (senha, id_func) VALUES
