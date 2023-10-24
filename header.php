@@ -24,6 +24,9 @@
                         <a class="nav-link" id="Sometype" href="#produtos">Produtos</a>
                     </li>
                 </ul>
+                <form method="post">
+                    <input type="submit" name="logout" value="Logout">
+                </form>
                 <!-- Formulário de pesquisa -->
                 <!-- <form class="d-flex" role="search">
                     <input class="form-control me-2" id="bg_form_pesquisar" type="search" placeholder="Search" aria-label="Search">

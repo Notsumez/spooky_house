@@ -14,49 +14,96 @@
         $cpf_enviado = $_POST['cpf'];
         $senha_enviada = $_POST['senha'];
     
-        // Seleciona o cpf do usuário logado
-        $selectCpf = $conn->query("SELECT cpf, id FROM Clientes WHERE cpf = '".$cpf_enviado."';");
-        $dadosCliente = $selectCpf->fetch_assoc();
-        
-        if ($dadosCliente){
-            $select_cpf = $dadosCliente['cpf'];
-            $selectCpfId = $dadosCliente['id'];
-            
-            // criptografia da senha
-            $senhafinal = md5($senha_enviada);
-            
-            // Limita a senha a 12 caracteres
-            $hash_md5_12 = substr($senhafinal, 0, 8);
-            
-            // remove o ponto do cpf
-            $cpf_semPonto = str_replace('.', '', $select_cpf);
+        // Verifica na tabela de Clientes
+        $selectCliente = $conn->query("SELECT cpf, id FROM Clientes WHERE cpf = '$cpf_enviado'");
+        $dadosCliente = $selectCliente->fetch_assoc();
+    
+        // Verifica na tabela de Funcionários
+        $selectFuncionario = $conn->query("SELECT cpf, id FROM Funcionarios WHERE cpf = '$cpf_enviado'");
+        $dadosFuncionario = $selectFuncionario->fetch_assoc();
+    
+        $select_cpf = null; // Inicialize a variável fora dos blocos condicionais
+    
+        if ($dadosCliente || $dadosFuncionario) {
+            if ($dadosCliente) {
+                $selectCpfId = $dadosCliente['id'];
+                $select_cpf = $dadosCliente['cpf'];
 
-            // pega só os 5 primeiros caracteres do cpf
-            $cpf_cortado = substr($cpf_semPonto, 0, 5);
-        
-            // criptografa a os 5 primeiros caracteres do cpf
-            $cpf_quase_final = md5($cpf_cortado);
-        
-            // limita o hash a 5 caracteres
-            $cpf_final = substr($cpf_quase_final, 0, 5);
-            $senha_criptografada = 'Cli' . $selectCpfId . $hash_md5_12 . 'Spooky-' . $cpf_final;  
-        
-            $select_Senha = $conn->query("SELECT senha FROM Login_clientes where id_cliente = '$selectCpfId'");
-            $row_Senha = $select_Senha->fetch_assoc();
-            if ($row_Senha) { // Verifica se a senha foi encontrada
-                $senha_do_banco = $row_Senha['senha'];
-                if ($senha_criptografada == $senha_do_banco) {
-                    $_SESSION['Id'] = $selectCpfId;
-                    $_SESSION['Login'] = 'Spooky';
-                    header('location: index.php');
+                // criptografia da senha
+                $senhafinal = md5($senha_enviada);
+                
+                // Limita a senha a 12 caracteres
+                $hash_md5_12 = substr($senhafinal, 0, 8);
+                
+                // remove o ponto do cpf
+                $cpf_semPonto = str_replace('.', '', $select_cpf);
+    
+                // pega só os 5 primeiros caracteres do cpf
+                $cpf_cortado = substr($cpf_semPonto, 0, 5);
+            
+                // criptografa a os 5 primeiros caracteres do cpf
+                $cpf_quase_final = md5($cpf_cortado);
+            
+                // limita o hash a 5 caracteres
+                $cpf_final = substr($cpf_quase_final, 0, 5);
+                $senha_criptografada = 'Cli' . $selectCpfId . $hash_md5_12 . 'Spooky-' . $cpf_final;  
+            
+                echo $senha_criptografada;
+
+                $select_Senha = $conn->query("SELECT senha FROM Login_clientes where id_cliente = '$selectCpfId'");
+                $row_Senha = $select_Senha->fetch_assoc();
+                if ($row_Senha) { // Verifica se a senha foi encontrada
+                    $senha_do_banco = $row_Senha['senha'];
+                    if ($senha_criptografada == $senha_do_banco) {
+                        $_SESSION['Id'] = $selectCpfId;
+                        $_SESSION['Login'] = 'Spooky';
+                        
+                        header('location: index.php');
+                    } else {
+                        header('location: login.php?erro=s');
+                    }
                 } else {
                     header('location: login.php?erro=s');
                 }
-            } else {
-                header('location: login.php?erro=s');
+            } elseif ($dadosFuncionario) {
+                $selectCpfId = $dadosFuncionario['id'];
+                $select_cpf = $dadosFuncionario['cpf']; 
+
+                // criptografia da senha
+                $senhafinal = md5($senha_enviada);
+                
+                // Limita a senha a 12 caracteres
+                $hash_md5_12 = substr($senhafinal, 0, 8);
+                
+                // remove o ponto do cpf
+                $cpf_semPonto = str_replace('.', '', $select_cpf);
+    
+                // pega só os 5 primeiros caracteres do cpf
+                $cpf_cortado = substr($cpf_semPonto, 0, 5);
+            
+                // criptografa a os 5 primeiros caracteres do cpf
+                $cpf_quase_final = md5($cpf_cortado);
+            
+                // limita o hash a 5 caracteres
+                $cpf_final = substr($cpf_quase_final, 0, 5);
+                $senha_criptografada = 'FUN' . $selectCpfId . $hash_md5_12 . 'Spooky-' . $cpf_final;  
+
+                $select_Senha = $conn->query("SELECT senha FROM Login_funcionarios where id_func = '$selectCpfId'");
+                $row_Senha = $select_Senha->fetch_assoc();
+                if ($row_Senha) { // Verifica se a senha foi encontrada
+                    $senha_do_banco = $row_Senha['senha'];
+                    if ($senha_criptografada == $senha_do_banco) {
+                        $_SESSION['Id'] = $selectCpfId;
+                        $_SESSION['Login'] = 'Spooky';
+                        header('location: index.php');
+                    } else {
+                        header('location: login.php?erro=s');
+                    }
+                } else {
+                    header('location: login.php?erro=s');
+                }
             }
-        }else{
-            header('location: login.php?erro=s');
+            
         }
     }
 ?>

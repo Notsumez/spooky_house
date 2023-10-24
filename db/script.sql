@@ -1,4 +1,3 @@
--- ============================== CRIAÇÃO DO BANCO =================================
 CREATE DATABASE Spooky_House;
 use Spooky_House;
 
@@ -161,8 +160,6 @@ CREATE TABLE Login_funcionarios(
     foreign key(id_func) references Funcionarios(id)
 );
 
--- ============================== INSERTS =================================
-
 -- Inserir dados na tabela Clientes
 INSERT INTO Clientes (nome, email, cpf, telefone, imagem) VALUES
 ('Pactw', 'pequitw@gmail.com', '123.456.789-01', 1234567890, 'imagem1.jpg'),
@@ -178,9 +175,9 @@ INSERT INTO End_clientes (logradouro, numero, cidade, uf, cep, id_cliente) VALUE
 
 -- Inserir dados na tabela Funcionarios
 INSERT INTO Funcionarios (nome, cpf, email, telefone, periodo, funcao, nivel, ativo, imagem) VALUES
-('Funcionario 1', '456.789.012-34', 'funcionario1@email.com', 1234567, 'Manhã', 'Cargo 1', 'adm', 1, 'imagem1.jpg'),
-('Funcionario 2', '567.890.123-45', 'funcionario2@email.com', 2345678, 'Tarde', 'Cargo 2', 'func', 1, 'imagem2.jpg'),
-('Funcionario 3', '678.901.234-56', 'funcionario3@email.com', 3456789, 'Noite', 'Cargo 3', 'adm', 0, 'imagem3.jpg');
+('Funcionario 1', '456.789.012-34', 'funcionario1@gmail.com', 1234567, 'Manhã', 'Cargo 1', 'adm', 1, 'imagem1.jpg'),
+('Funcionario 2', '567.890.123-45', 'funcionario2@gmail.com', 2345678, 'Tarde', 'Cargo 2', 'func', 1, 'imagem2.jpg'),
+('Funcionario 3', '678.901.234-56', 'funcionario3@gmail.com', 3456789, 'Noite', 'Cargo 3', 'adm', 0, 'imagem3.jpg');
 
 -- Inserir dados na tabela Produtos
 INSERT INTO Produtos (nome, descricao, resumo, preco, quantidade, imagem, destaque) VALUES
@@ -265,11 +262,11 @@ INSERT INTO Pedidos_cancelados (id_pedido, motivo) VALUES
 -- Inserir dados na tabela Login_clientes
 INSERT INTO Login_clientes (senha, id_cliente) VALUES
 ('Cli1202cb962Spooky-827cc', 1),
-('Cli1202cb962Spooky-827cc', 2),
-('Cli1202cb962Spooky-827cc', 3);
+('Cli2202cb962Spooky-adcae', 2),
+('Cli3202cb962Spooky-992a6', 3);
 
 -- Inserir dados na tabela Login_funcionarios
 INSERT INTO Login_funcionarios (senha, id_func) VALUES
-('admin123', 1),
-('funcionario123', 2),
-('admin456', 3);
+('FUN1202cb962Spooky-c4ded', 1),
+('FUN2202cb962Spooky-099eb', 2),
+('FUN3202cb962Spooky-1e01b', 3);
