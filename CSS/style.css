@@ -8,6 +8,10 @@ a{
     text-decoration: none;
 }
 
+.escondido {
+    display: none;
+}
+
 @keyframes inflate {
     0% { transform: scale(0); }
     100% { transform: scale(1); }
@@ -30,6 +34,22 @@ a{
 #bg_nav {
     background-color: transparent;
     transition: background-color 0.3s ease;
+}
+
+.dropdown-menu{
+    background: transparent;
+    backdrop-filter: blur(15px);
+    border: 1px solid white;
+}
+
+.dropdown-item{
+    color: white;
+    width: 100%;
+}
+
+.dropdown-item:hover{
+    background-color: #f8741d;
+    color: white;
 }
 
 .fixed-header {
@@ -188,6 +208,57 @@ a{
             transition-duration: 400ms;
     -webkit-transition-property: width, left;
     transition-property: width, left;
+  }
+
+  /* Girar o botão de configurações */
+
+  .btn_config {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 6px 12px;
+    gap: 8px;
+    height: 36px;
+    margin-right: 50px;
+    border: none;
+    background: transparent;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .btn_config:hover .svg-icon {
+    -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
   }
 
 /* ============================== FOOTER =================================== */
