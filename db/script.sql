@@ -142,7 +142,7 @@ CREATE TABLE Pedidos_cancelados(
     id_pedido int not null,
     motivo text null,
     primary key(id),
-    foreign key(id_pedido) references Pedidos(id),
+    foreign key(id_pedido) references Pedidos(id)
 );
 
 CREATE TABLE Login_clientes(
@@ -167,8 +167,8 @@ CREATE TABLE Login_funcionarios(
 INSERT INTO Clientes (nome, email, cpf, telefone, imagem) VALUES
 ('Pactw', 'pequitw@gmail.com', '123.456.789-01', 1234567890, 'imagem1.jpg'),
 ('Viniccius13', 'vnccs13@gmail.com', '234.567.890-12', 2345678901, 'imagem2.jpg'),
-('Rezendeevil', 'rezendeevil@gmail.com', '345.678.901-23', 3456789012, 'imagem3.jpg');
-('AuthenticGames', 'authentic@gmail.com', '345.678.901-23', 3456789012, 'imagem3.jpg');
+('Rezendeevil', 'rezendeevil@gmail.com', '345.678.901-23', 3456789012, 'imagem3.jpg'),
+('AuthenticGames', 'authentic@gmail.com', '377.678.901-23', 3456789012, 'imagem3.jpg');
 
 -- Inserir dados na tabela End_clientes
 INSERT INTO End_clientes (logradouro, numero, cidade, uf, cep, id_cliente) VALUES

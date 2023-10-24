@@ -1,6 +1,6 @@
 <?php
 // Verifica se o usuário está autenticado
-$autenticado = false; // Coloque sua lógica de autenticação aqui
+$autenticado = false; 
 
 if (!$autenticado) {
     header("Location: login.php"); // Redireciona para a página de login
