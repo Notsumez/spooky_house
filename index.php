@@ -1,3 +1,13 @@
+<?php
+// Verifica se o usuário está autenticado
+$autenticado = false; // Coloque sua lógica de autenticação aqui
+
+if (!$autenticado) {
+    header("Location: login.php"); // Redireciona para a página de login
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
