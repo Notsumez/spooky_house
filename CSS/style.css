@@ -16,6 +16,15 @@ a{
 .inflar {
     animation: inflate 1.5s ease-in-out;
 }
+
+.shape_bg{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    mix-blend-mode: soft-light;
+    opacity: .5;
+}
 /* ============================== HEADER =================================== */
 #bg_nav {
     background-color: transparent;

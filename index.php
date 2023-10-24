@@ -8,6 +8,7 @@
     <title>Spooky House</title>
 </head>
 <body id="fundo_index">
+    <img src="images/shape-bg.png" alt="" class="shape_bg">
     <noscript>Este site necessita de javascript para funcionar.</noscript>
     <!-- Header do index -->
     <?php include 'header.php'; ?>
