@@ -119,12 +119,17 @@ a{
     font-size: 15pt;
 }
 
+@font-face {
+    font-family: 'Drip_Octuber';
+    src: url('../fontes/DripOctober-vm0JA.ttf');
+}
+
 #txt_motivacional{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #txt_doces{
-    font-family: 'Playpen_Sans';
+    font-family: 'Drip_Octuber';
 }
 
 /* ============================== Detalhes =================================== */
