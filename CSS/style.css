@@ -123,6 +123,10 @@ a{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#txt_doces{
+    font-family: 'Playpen_Sans';
+}
+
 /* ============================== Detalhes =================================== */
 
 .btn_explore {

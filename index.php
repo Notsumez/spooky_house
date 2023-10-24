@@ -12,9 +12,10 @@
     <!-- Header do index -->
     <?php include 'header.php'; ?>
     
-    <!-- Primeira parte da página inicial -->
-    <?php include 'area1.php';?>
+    <!-- Conteúdo da página inicial -->
+    <?php include 'conteudo.php';?>
 
+    <?php include 'sobre.php';?>
     <!-- Footer do index -->
     <?php include 'footer.php'; ?>
 </body>
