@@ -29,9 +29,17 @@
             </div>
             <div class="p-4">
                 <h6 id="Night_Pumpkin">Redes Sociais</h6>
-                <ul>
-
-                </ul>
+                <div class="d-flex" style="flex-direction: column;">
+                    <a href="#">
+                        <img width="30px" class="p-1" src="images/facebook_logo.svg" alt="Logo Facebook">
+                    </a>
+                    <a href="#">
+                        <img width="30px" class="p-1" src="images/twitter_logo.svg" alt="Logo Twitter">
+                    </a>
+                    <a href="#">
+                        <img width="30px" class="p-1" src="images/instagram_logo.svg" alt="Logo Instagram">
+                    </a>
+                </div>
             </div>
         </div>
     </div>

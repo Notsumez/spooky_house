@@ -11,6 +11,9 @@
     <!-- Header do index -->
     <?php include 'header.php'; ?>
     
+    <!-- Primeira parte da página inicial -->
+    <?php include 'area1.php';?>
+
     <!-- Footer do index -->
     <?php include 'footer.php'; ?>
 </body>
