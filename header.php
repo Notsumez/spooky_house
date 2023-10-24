@@ -31,12 +31,12 @@
                             <li>
                                 <div class="d-flex" >
                                     <div>
-                                        <a class="dropdown-item" href="#">Você</a>
+                                        <a class="dropdown-item" href="#">Conta</a>
                                         <a class="dropdown-item" href="#">Meu Carrinho</a>
                                         <a class="dropdown-item" href="#">Notificações</a>
                                     </div>
-                                    <a class="dropdown-item" href="">
-                                        <img src="images/perfil/galo_foda.jpg" width="100%" alt="" style="border: 1px solid white;">
+                                    <a href="">
+                                        <img src="images/perfil/galo_foda.jpg" width="100%" alt="" style="border: 1px solid white; border-radius: 20px;">
                                     </a>
                                 </div>
                             </li>
