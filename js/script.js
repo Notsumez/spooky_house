@@ -2,7 +2,7 @@
 window.addEventListener("scroll", function() {
     var element = document.getElementById("bg_nav");
     if (window.scrollY > 0) {
-        element.style.backgroundColor = "#181818";
+        element.style.backdropFilter = "blur(15px)";
     } else {
         element.style.backgroundColor = "transparent";
     }

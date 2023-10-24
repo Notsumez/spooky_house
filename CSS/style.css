@@ -1,14 +1,21 @@
 
 /* ============================== GERAL =================================== */
-#fundo_index{
-    background-color: #292929;
-    
+#fundo_index {
+    background: linear-gradient(to bottom, rgb(12, 12, 12), #292929);
 }
 
 a{
     text-decoration: none;
 }
 
+@keyframes inflate {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+.inflar {
+    animation: inflate 1.5s ease-in-out;
+}
 /* ============================== HEADER =================================== */
 #bg_nav {
     background-color: transparent;
@@ -112,9 +119,57 @@ a{
     font-size: 15pt;
 }
 
+#txt_motivacional{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 /* ============================== Detalhes =================================== */
 
-
+.btn_explore {
+    font-size: 18pt;
+    color: #e1e1e1;
+    font-family: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    -webkit-transition-duration: 400ms;
+            transition-duration: 400ms;
+    -webkit-transition-property: color;
+    transition-property: color;
+  }
+  
+  .btn_explore:focus,
+  .btn_explore:hover {
+    color: #fff;
+  }
+  
+  .btn_explore:focus:after,
+  .btn_explore:hover:after {
+    width: 100%;
+    left: 0%;
+  }
+  
+  .btn_explore:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    -webkit-transition-duration: 400ms;
+            transition-duration: 400ms;
+    -webkit-transition-property: width, left;
+    transition-property: width, left;
+  }
 
 /* ============================== FOOTER =================================== */
 footer{
