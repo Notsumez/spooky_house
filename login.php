@@ -1,49 +1,65 @@
 <?php 
+    session_start();
+
+    // Verifique se a sessão já existe
+    if (isset($_SESSION['Id'])) {
+    // Sessão já existe, redirecione para a página index
+        header('Location: index.php');
+        exit;
+    }
+    // Conexão com o banco de dados
     include 'connection/connect.php';
 
     if ($_POST) {
-        $cpf = $_POST['cpf'];
-        $senha = $_POST['senha'];
+        $cpf_enviado = $_POST['cpf'];
+        $senha_enviada = $_POST['senha'];
     
-        // Verificar se o CPF está na tabela Clientes
-        $query = "SELECT * FROM Clientes WHERE cpf = '$cpf'";
-        $result = mysqli_query($conn, $query);
-    
-        if (mysqli_num_rows($result) > 0) {
-            // O CPF pertence a um cliente
-            $row = mysqli_fetch_assoc($result);
-            // Aqui você pode fazer o que quiser com os dados do cliente
-            // Por exemplo, exibir os dados na página ou redirecionar para uma página de perfil do cliente
+        // Seleciona o cpf do usuário logado
+        $selectCpf = $conn->query("SELECT cpf, id FROM Clientes WHERE cpf = '".$cpf_enviado."';");
+        $dadosCliente = $selectCpf->fetch_assoc();
+        
+        if ($dadosCliente){
+            $select_cpf = $dadosCliente['cpf'];
+            $selectCpfId = $dadosCliente['id'];
             
-            // Inicie a sessão
-            session_start();
-            session_name($cpf);
+            // criptografia da senha
+            $senhafinal = md5($senha_enviada);
+            
+            // Limita a senha a 12 caracteres
+            $hash_md5_12 = substr($senhafinal, 0, 8);
+            
+            // remove o ponto do cpf
+            $cpf_semPonto = str_replace('.', '', $select_cpf);
 
-            // Armazena os dados do cliente na sessão
-            $_SESSION['id_usuario'] = $row['id'];
-            header('location: index.php');
-        } else {
-            // O CPF não pertence a um cliente, vamos verificar se pertence a um funcionário
-            $query = "SELECT * FROM Funcionarios WHERE cpf = '$cpf'";
-            $result = mysqli_query($conn, $query);
-    
-            if (mysqli_num_rows($result) > 0) {
-                // O CPF pertence a um funcionário
-                $row = mysqli_fetch_assoc($result);
-                // Aqui você pode fazer o que quiser com os dados do funcionário
-                // Por exemplo, exibir os dados na página ou redirecionar para uma página de perfil do funcionário
-
-                // Armazena os dados do cliente na sessão
-                $_SESSION['id_usuario'] = $row['id'];
-                header('location: index.php');
+            // pega só os 5 primeiros caracteres do cpf
+            $cpf_cortado = substr($cpf_semPonto, 0, 5);
+        
+            // criptografa a os 5 primeiros caracteres do cpf
+            $cpf_quase_final = md5($cpf_cortado);
+        
+            // limita o hash a 5 caracteres
+            $cpf_final = substr($cpf_quase_final, 0, 5);
+            $senha_criptografada = 'Cli' . $selectCpfId . $hash_md5_12 . 'Spooky-' . $cpf_final;  
+        
+            $select_Senha = $conn->query("SELECT senha FROM Login_clientes where id_cliente = '$selectCpfId'");
+            $row_Senha = $select_Senha->fetch_assoc();
+            if ($row_Senha) { // Verifica se a senha foi encontrada
+                $senha_do_banco = $row_Senha['senha'];
+                if ($senha_criptografada == $senha_do_banco) {
+                    $_SESSION['Id'] = $selectCpfId;
+                    $_SESSION['Login'] = 'Spooky';
+                    header('location: index.php');
+                } else {
+                    echo 'Senha incorreta';
+                }
             } else {
-                // CPF não encontrado em nenhuma tabela
-                header('location: login.php?erro=s');
-                exit;
+                echo 'Senha não encontrada no banco de dados';
             }
+        }else{
+            echo 'cpf incorreto';
         }
     }
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -75,14 +91,14 @@
                     <label for="senha">Senha</label>
                     <input type="password" name="senha" id="senha" placeholder="">
                     <div class="forgot">
-                        <a rel="noopener noreferrer" href="#">Esqueceu sua senha ?</a>
+                        <a rel="noopener noreferrer" href="recuperacao.php">Esqueceu sua senha ?</a>
                     </div>
                 </div>
                 <button class="sign">Entrar</button>
             </form>
             <br>
             <p class="signup">Não tem uma conta?
-                <a rel="noopener noreferrer" href="#" class="">Inscreva-se</a>
+                <a rel="noopener noreferrer" href="cadastro.php" class="">Inscreva-se</a>
             </p>
         </div>
     </main>
