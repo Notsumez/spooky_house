@@ -18,3 +18,17 @@ window.addEventListener("scroll", function() {
         element.classList.remove("fixed-header");
     }
 });
+
+// =================================== REVELAR CONTEÚDO LENTAMENTE =======================================
+
+const sr = ScrollReveal({
+    origin: 'top',
+    distance: '60px',
+    duration: 2500,
+    delay: 400,
+    // reset: true // Repetição das Animações
+})
+
+sr.reveal('#home')
+sr.reveal('#destaques', {origin: 'right', delay: 600})
+sr.reveal('#login')
