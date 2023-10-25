@@ -181,9 +181,11 @@ INSERT INTO Funcionarios (nome, cpf, email, telefone, periodo, funcao, nivel, at
 
 -- Inserir dados na tabela Produtos
 INSERT INTO Produtos (nome, descricao, resumo, preco, quantidade, imagem, destaque) VALUES
-('Produto 1', 'Descrição do Produto 1', 'Resumo 1', 19.99, 100, 'produto1.jpg', 'Sim'),
+('Fantasia Endergirl', 'Esta deslumbrante fantasia Endergirl transformará você na misteriosa habitante do mundo das sombras. Perfeita para festas temáticas e eventos especiais. Inclui vestido roxo e maquiagem vibrante.', 'Prepare-se para uma viagem ao mundo das sombras com esta elegante fantasia Endergirl. Ideal para festas a fantasia e eventos temáticos.', 19.99, 100, 'endergirls.jpg', 'Sim'),
 ('Produto 2', 'Descrição do Produto 2', 'Resumo 2', 29.99, 50, 'produto2.jpg', 'Não'),
-('Produto 3', 'Descrição do Produto 3', 'Resumo 3', 9.99, 200, 'produto3.jpg', 'Sim');
+('Fantasia Villager', 'Esta é a fantasia perfeita para todos os fãs de Minecraft. Torne-se um aldeão do jogo com esta adorável fantasia Villager. Inclui roupas autênticas e acessórios.', 'Transforme-se em um aldeão de Minecraft com esta adorável fantasia Villager. Ideal para festas de videogame e cosplay.', 9.99, 200, 'villager.jpg', 'Sim'),
+('Máscara Bojack', 'Se você é um fã de BoJack Horseman, esta máscara é um item imperdível para você! Leve para casa a máscara do personagem principal e divirta-se nas festas com os amigos.', 'Entre no mundo de BoJack Horseman com esta máscara incrível do personagem principal. Ideal para festas e eventos de comédia.', 9.99, 200, 'bojack.jpg', 'Sim');
+
 
 -- Inserir dados na tabela Categorias
 INSERT INTO Categorias (nome) VALUES
