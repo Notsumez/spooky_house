@@ -49,11 +49,6 @@
                         </ul>
                     </li>
                 </ul>
-                <!-- Formulário de pesquisa -->
-                <!-- <form class="d-flex" role="search">
-                    <input class="form-control me-2" id="bg_form_pesquisar" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn_pesquisar" type="submit">Pesquisar</button>
-                </form> -->
             </div>
         </div>
     </nav>
