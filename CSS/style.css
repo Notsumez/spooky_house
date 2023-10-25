@@ -88,6 +88,10 @@ a{
     font-family: 'Drip_Octuber';
 }
 
+#txt_sobre{
+    font-family: 'Sometype_Mono';
+}
+
 /* ============================== Detalhes =================================== */
 
 .btn_explore {
@@ -193,7 +197,7 @@ a{
     transition: background-color 0.3s ease;
     z-index: 9999999;
 }
-
+ 
 .dropdown-menu{
     background-color: #292929;
     border: 1px solid white;

@@ -12,13 +12,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" id="Sometype" aria-current="page" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="#sobre">Sobre</a>
+                        <a class="nav-link active" id="Sometype" aria-current="page" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="Sometype" href="#destaques">Destaques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="Sometype" href="#sobre">Sobre</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="Sometype" href="#produtos">Produtos</a>

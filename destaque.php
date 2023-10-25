@@ -18,13 +18,13 @@
         </div>
         <!-- Estrutura de repetição dos Cards -->
         <?php do { ?>
-    <div class="card card_destaque" style="width: 18rem;">
-        <img src="images/Fantasias/<?php echo $row_destaque['imagem']; ?>" class="card-img-top" alt="<?php echo $row_destaque['imagem']; ?>" style="width: 100%; max-height: 250px;">
-        <div class="card-body">
-            <h5 class="card-title"><?php echo $row_destaque['nome'];?></h5>
-            <p class="card-text"><?php echo $row_destaque['resumo'];?></p>
-            <a href="#" class="btn btn-primary">Detalhes</a>
-        </div>
+            <div class="card card_destaque" style="width: 18rem;">
+                <img src="images/Fantasias/<?php echo $row_destaque['imagem']; ?>" class="card-img-top" alt="<?php echo $row_destaque['imagem']; ?>" style="width: 100%; max-height: 250px;">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $row_destaque['nome'];?></h5>
+                    <p class="card-text"><?php echo $row_destaque['resumo'];?></p>
+                    <a href="#" class="btn btn-primary">Detalhes</a>
+                </div>
             </div>
         <?php } while ($row_destaque = $selectDestaques->fetch_assoc()) ?>
     </div>
