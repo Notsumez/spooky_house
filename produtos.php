@@ -1,7 +1,7 @@
 <?php 
     include 'connection/connect.php';
 
-    $select = $conn->query("SELECT * FROM Produtos");
+    $select = $conn->query("SELECT * FROM Produtos;");
     $Row_produtos = $select->fetch_assoc();
 ?>
 <!DOCTYPE html>
@@ -16,28 +16,30 @@
     <title>Produtos - Navegar</title>
 </head>
 <body id="fundo_index">
+    <!-- Background que faz efeito no fundo do site -->
+    <img src="images/elementos/shape-bg.png" class="shape_bg">
     <!-- Header -->
     <?php include 'header.php';?>
 
     <!-- Conteúdo -->
     <main id="produtos">
-        <div class="container">
+        <div class="container" style="margin-top: 20px;">
             <form action="produtos.php" class="d-flex" role="search" id="Pesquisar">
                 <input class="form-control me-2" id="bg_form_pesquisar" type="search" placeholder="Pesquisar" aria-label="Search">
                 <button class="btn_pesquisar" type="submit">Pesquisar</button>
             </form>
             <br>
-            <div>
+            <div class="d-flex flex-wrap">
                 <?php do { ?>
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="card card_destaque" style="width: 18rem; margin-right: 20px; margin-bottom: 20px; margin-top: 20px; flex: 0 0 calc(25% - 20px);">
+                        <img src="images/Fantasias/<?php echo $Row_produtos['imagem'];?>" class="card-img-top" style="max-height: 250px;" alt="<?php echo $Row_produtos['imagem'];?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $Row_produtos['nome'];?></h5>
+                            <p class="card-text"><?php echo $Row_produtos['resumo'];?></p>
+                            <a href="#" class="btn btn-primary">Ver mais</a>
+                        </div>
                     </div>
-                </div>
-                <?php }while($Row_produtos = $select->fetch_assoc()); ?>
+                <?php } while ($Row_produtos = $select->fetch_assoc()); ?>
             </div>
         </div>
     </main>
