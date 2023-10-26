@@ -23,12 +23,13 @@
 
     <!-- Conteúdo -->
     <main id="produtos">
-        <div class="container" style="margin-top: 20px;">
-            <form action="produtos.php" class="d-flex" role="search" id="Pesquisar">
-                <input class="form-control me-2" id="bg_form_pesquisar" type="search" placeholder="Pesquisar" aria-label="Search">
+        <div class="container" style="margin-top: 20px; margin-bottom: 80px;">
+            <form action="pesquisar.php" class="d-flex" role="search" id="Pesquisar">
+                <input class="form-control me-2" name="pesquisar" id="bg_form_pesquisar" type="search" placeholder="Pesquisar" aria-label="Search">
                 <button class="btn_pesquisar" type="submit">Pesquisar</button>
             </form>
             <br>
+            <!-- Começo dos cards dos produtos -->
             <div class="d-flex flex-wrap">
                 <?php do { ?>
                     <div class="card card_destaque" style="width: 18rem; margin-right: 20px; margin-bottom: 20px; margin-top: 20px; flex: 0 0 calc(25% - 20px);">
@@ -36,7 +37,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $Row_produtos['nome'];?></h5>
                             <p class="card-text"><?php echo $Row_produtos['resumo'];?></p>
-                            <a href="#" class="btn btn-primary">Ver mais</a>
+                            <a href="detalhes.php" class="btn" style="background-color: #f8741d;">Ver mais</a>
                         </div>
                     </div>
                 <?php } while ($Row_produtos = $select->fetch_assoc()); ?>

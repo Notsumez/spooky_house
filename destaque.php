@@ -23,7 +23,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row_destaque['nome'];?></h5>
                     <p class="card-text"><?php echo $row_destaque['resumo'];?></p>
-                    <a href="#" class="btn btn-primary">Detalhes</a>
+                    <a href="#" class="btn" style="background-color: #f8741d;">Detalhes</a>
                 </div>
             </div>
         <?php } while ($row_destaque = $selectDestaques->fetch_assoc()) ?>
