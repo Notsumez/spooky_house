@@ -29,6 +29,7 @@
                 <button class="btn_pesquisar" type="submit">Pesquisar</button>
             </form>
             <br>
+            <h2 class="text-center" style="font-size: 20pt; color: white;">Produtos Gerais</h2>
             <!-- Começo dos cards dos produtos -->
             <div class="d-flex flex-wrap">
                 <?php do { ?>

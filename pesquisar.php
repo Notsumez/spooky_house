@@ -31,7 +31,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Link para CSS -->
     <link rel="stylesheet" href="CSS/style.css">
-    <title>Produtos Busca - <?php echo $termoBusca?> </title>
+    <title>Produtos Busca - <?php if (isset($termoBusca)) { echo $termoBusca; }elseif (isset($_GET['destaque'])){ echo 'Destaques'; } ?> </title>
 </head>
 <body id="fundo_index">
     <!-- Background que faz efeito no fundo do site -->
@@ -43,7 +43,7 @@
     <main id="produtos">
         <div class="container" style="margin-top: 20px; margin-bottom: 80px;">
             <form action="pesquisar.php" class="d-flex" role="search" id="Pesquisar">
-                <input class="form-control me-2" name="pesquisar" id="bg_form_pesquisar" type="search" placeholder="Pesquisar" value="<?php echo $termoBusca; ?>" aria-label="Search">
+                <input class="form-control me-2" name="pesquisar" id="bg_form_pesquisar" type="search" placeholder="Pesquisar" value="<?php echo $termoBusca; ?>" aria-label="Search" required>
                 <button class="btn_pesquisar" type="submit">Pesquisar</button>
             </form>
             <br>
