@@ -2,8 +2,9 @@
     include 'connection/connect.php';
 
     $termoBusca = $_GET['pesquisar'];
-    $consulta = $conn->query("SELECT * FROM Produtos WHERE descricao LIKE '%".$termoBusca."%'");
+    $consulta = $conn->query("SELECT * FROM Produtos WHERE descricao OR nome LIKE '%".$termoBusca."%'");
     $row_busca = $consulta->fetch_assoc();
+    $num_linhas = $consulta->num_rows;
 ?>
 
 <!DOCTYPE html>
@@ -31,19 +32,29 @@
                 <button class="btn_pesquisar" type="submit">Pesquisar</button>
             </form>
             <br>
-            <!-- Começo dos cards dos produtos -->
-            <div class="d-flex flex-wrap">
-                <?php do { ?>
-                    <div class="card card_destaque" style="width: 18rem; margin-right: 20px; margin-bottom: 20px; margin-top: 20px; flex: 0 0 calc(25% - 20px);">
-                        <img src="images/Fantasias/<?php echo $row_busca['imagem'];?>" class="card-img-top" style="max-height: 250px;" alt="<?php echo $Row_busca['imagem'];?>">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $row_busca['nome'];?></h5>
-                            <p class="card-text"><?php echo $row_busca['resumo'];?></p>
-                            <a href="detalhes.php" class="btn" style="background-color: #f8741d;">Ver mais</a>
+
+            <!-- Se não tiver resultados da pesquisa -->
+            <?php if($num_linhas == 0){?>
+                <h2 class="text-center" style="font-size: 20pt; color: white;">Resultados para <b style="color: #f8741d;"><?php echo $termoBusca;?></b></h2>
+                <p class="text-center" style="color: white; font-size: 15pt;">Este não é um produto. Verifique a ortografia.</p>
+            <?php } ?>
+
+            <!-- Se tiver resultado da pesquisa -->
+            <?php if($num_linhas>0){?>
+                <!-- Começo dos cards dos produtos -->
+                <div class="d-flex flex-wrap">
+                    <?php do { ?>
+                        <div class="card card_destaque" style="width: 18rem; margin-right: 20px; margin-bottom: 20px; margin-top: 20px; flex: 0 0 calc(25% - 20px);">
+                            <img src="images/Fantasias/<?php echo $row_busca['imagem'];?>" class="card-img-top" style="max-height: 250px;" alt="<?php echo $Row_busca['imagem'];?>">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $row_busca['nome'];?></h5>
+                                <p class="card-text"><?php echo $row_busca['resumo'];?></p>
+                                <a href="detalhes.php" class="btn" style="background-color: #f8741d;">Ver mais</a>
+                            </div>
                         </div>
-                    </div>
-                <?php } while ($row_busca = $consulta->fetch_assoc()); ?>
-            </div>
+                    <?php } while ($row_busca = $consulta->fetch_assoc()); ?>
+                </div>
+            <?php } ?>
         </div>
     </main>
 
