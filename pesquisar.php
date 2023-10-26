@@ -1,10 +1,25 @@
 <?php 
     include 'connection/connect.php';
 
-    $termoBusca = $_GET['pesquisar'];
-    $consulta = $conn->query("SELECT * FROM Produtos WHERE descricao OR nome LIKE '%".$termoBusca."%'");
-    $row_busca = $consulta->fetch_assoc();
-    $num_linhas = $consulta->num_rows;
+    // Se existir um item de busca digitado ele pesquisa, caso não exista ele mostra tudo
+    if(isset($_GET['pesquisar'])){
+        $termoBusca = $_GET['pesquisar'];
+    }else{
+        $termoBusca = null;
+    }
+    
+    // Se a pesquisa foi por itens em destaques ele vai mostrar todos os que estão marcados como destaque
+    if (isset($_GET['destaque']) == 'sim'){
+        $consulta = $conn->query("SELECT * FROM Produtos WHERE destaque = 'Sim'");
+        $row_busca = $consulta->fetch_assoc();
+        $num_linhas = $consulta->num_rows;
+    // Se não, ele procura itens de acordo com um termo de busca digitado.
+    }else{
+        $consulta = $conn->query("SELECT * FROM Produtos WHERE descricao OR nome LIKE '%".$termoBusca."%'");
+        $row_busca = $consulta->fetch_assoc();
+        $num_linhas = $consulta->num_rows;
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -34,13 +49,18 @@
             <br>
 
             <!-- Se não tiver resultados da pesquisa -->
-            <?php if($num_linhas == 0){?>
+            <?php if($num_linhas == 0 && isset($_GET['pesquisar'])){?>
                 <h2 class="text-center" style="font-size: 20pt; color: white;">Resultados para <b style="color: #f8741d;"><?php echo $termoBusca;?></b></h2>
                 <p class="text-center" style="color: white; font-size: 15pt;">Este não é um produto. Verifique a ortografia.</p>
             <?php } ?>
 
             <!-- Se tiver resultado da pesquisa -->
             <?php if($num_linhas>0){?>
+                <?php if (isset($_GET['pesquisar'])){?>
+                    <h2 class="text-center" style="font-size: 20pt; color: white;">Resultados para <b style="color: #f8741d;"><?php echo $termoBusca;?></b></h2>
+                <?php }elseif (isset($_GET['destaque'])){ ?>
+                    <h2 class="text-center" style="font-size: 20pt; color: white;">Resultados para <b style="color: #f8741d;">Destaques</b></h2>
+                <?php }?>
                 <!-- Começo dos cards dos produtos -->
                 <div class="d-flex flex-wrap">
                     <?php do { ?>

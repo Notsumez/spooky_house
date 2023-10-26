@@ -10,7 +10,7 @@
                 Os produtos mais comprados e <br> 
                 bem avaliados pelos usuários!!
             </p>
-            <a href="produtos.php?destaques=s">
+            <a href="pesquisar.php?destaque=sim">
                 <button class="btn_destaques">
                     <span class="btn_destaques-content">Veja Mais</span>
                 </button>
