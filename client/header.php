@@ -12,7 +12,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" id="Sometype" aria-current="page" href="index.php">Conta</a>
+                        <a class="nav-link" id="Sometype" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" id="Sometype" aria-current="page" href="conta.php">Conta</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="Sometype" href="carrinho.php">Carrinho</a> 
@@ -22,9 +25,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="Sometype" href="pedidos.php">Pedidos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <form method="post">
