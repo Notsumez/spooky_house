@@ -43,7 +43,7 @@
                             <?php if ($Row_produtos['destaque'] == 'Sim'){ ?>
                                 <button type="button" class="btn" style="color: white;">DESTAQUE</button>
                             <?php } ?>
-                            <a href="detalhes.php" class="btn float-right" style="background-color: #f8741d;">Ver mais</a>
+                            <a href="detalhes.php?Id=<?php echo $Row_produtos['id']; ?>" class="btn float-right" style="background-color: #f8741d;">Ver mais</a>
                         </div>
                     </div>
                 <?php } while ($Row_produtos = $select->fetch_assoc()); ?>

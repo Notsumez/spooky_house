@@ -24,7 +24,7 @@
                     <h5 class="card-title"><?php echo $row_destaque['nome'];?></h5>
                     <p class="card-text"><?php echo $row_destaque['resumo'];?></p>
                     <p class="card-text">Preço: <?php echo $row_destaque['preco']; ?></p>
-                    <a href="#" class="btn" style="background-color: #f8741d;">Detalhes</a>
+                    <a href="detalhes.php?Id=<?php echo $row_destaque['id']; ?>" class="btn" style="background-color: #f8741d;">Detalhes</a>
                 </div>
             </div>
         <?php } while ($row_destaque = $selectDestaques->fetch_assoc()) ?>
