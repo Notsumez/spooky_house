@@ -210,6 +210,8 @@ a{
     right: -2rem;
     width: 20%;
 }
+
+
 /* ============================== HEADER =================================== */
 #bg_nav {
     background-color: transparent;
@@ -284,6 +286,7 @@ a{
 #bg_form_pesquisar:focus {
     color: white;
   }
+  
 
 /* ============================== DESTAQUES =================================== */
 .card_destaque{
