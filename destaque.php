@@ -23,6 +23,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row_destaque['nome'];?></h5>
                     <p class="card-text"><?php echo $row_destaque['resumo'];?></p>
+                    <p class="card-text">Preço: <?php echo $row_destaque['preco']; ?></p>
                     <a href="#" class="btn" style="background-color: #f8741d;">Detalhes</a>
                 </div>
             </div>
