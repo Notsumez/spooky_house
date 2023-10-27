@@ -32,4 +32,3 @@ const sr = ScrollReveal({
 sr.reveal('#home')
 sr.reveal('#destaques', {origin: 'right', delay: 600})
 sr.reveal('#sobre', {origin: 'left', delay: 600})
-

@@ -17,19 +17,23 @@
     <!-- Link para Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Link para o CSS -->
-    <link rel="stylesheet" href="../CSS/Area_Cliente.css">
+    <link rel="stylesheet" href="../CSS/style.css">
     <title>Área do Cliente - <?php echo $row_cliente['nome'];?> </title>
 </head>
-<body id="fundo">
+<body id="fundo_index">
     <?php include 'header.php';?>
     <!-- Background que faz efeito no fundo do site -->
     <img src="../images/elementos/shape-bg.png" class="shape_bg">
     <noscript>Este site necessita de javascript para funcionar.</noscript>
-
-    <main>
         
+    <main>
+        <h1 class="text-light text-center" style="margin-top: 20px; margin-bottom: 40px;">Bem vindo, <?php echo $row_cliente['nome'];?></h1>
+        <div>
+            
+        </div>
     </main>
-
+    
+    <?php include 'footer.php';?>
 </body>
     <!-- Link para Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

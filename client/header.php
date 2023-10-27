@@ -12,19 +12,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" id="Sometype" aria-current="page" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#home'; } else { echo 'index.php#home';} ?>">Conta</a>
+                        <a class="nav-link active" id="Sometype" aria-current="page" href="index.php">Conta</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#destaques'; } else { echo 'index.php#destaques';} ?>">Carrinho</a> 
+                        <a class="nav-link" id="Sometype" href="carrinho.php">Carrinho</a> 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#sobre'; } else { echo 'index.php#sobre';} ?>">Notificações</a>
+                        <a class="nav-link" id="Sometype" href="notificacoes.php">Notificações</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'produtos.php') { echo '#produtos'; } else { echo 'produtos.php#produtos';} ?>">Pedidos</a>
+                        <a class="nav-link" id="Sometype" href="pedidos.php">Pedidos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'produtos.php') { echo '#produtos'; } else { echo 'produtos.php#produtos';} ?>">Home</a>
+                        <a class="nav-link" id="Sometype" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <form method="post">
