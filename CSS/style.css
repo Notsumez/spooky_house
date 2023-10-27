@@ -191,6 +191,25 @@ a{
     }
   }
 
+
+.inflar_mouse{
+    transition: transform 0.3s;
+}
+
+.inflar_mouse:hover{
+    transform: scale(1.2);
+}
+
+
+.arvore1 {
+    left: -2rem;
+    width: 20%;
+}
+
+.arvore2{
+    right: -2rem;
+    width: 20%;
+}
 /* ============================== HEADER =================================== */
 #bg_nav {
     background-color: transparent;
