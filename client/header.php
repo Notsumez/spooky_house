@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg" id="bg_nav">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand" id="logo_header" href="index.php">
+            <a class="navbar-brand" id="logo_header" href="../index.php">
                 <img src="../images/halloween.svg" width="7%" alt="Logo Spooky House"> 
                 Spooky House
             </a>
