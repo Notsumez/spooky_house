@@ -211,6 +211,21 @@ a{
     width: 20%;
 }
 
+#end_btn{
+    background: transparent; 
+    border-radius: 50%; 
+    color: white;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#end_btn:hover{
+    background-color: #f8741d;
+    border: 2px solid #2b1069;
+    color: #2b1069;
+}
 
 /* ============================== HEADER =================================== */
 #bg_nav {

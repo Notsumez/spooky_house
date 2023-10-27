@@ -1,18 +1,10 @@
 <?php 
     include '../verifica_session.php';
     include '../connection/connect.php';
-
+    
     $ID = $_SESSION['Id'];
     $select = $conn->query("SELECT * FROM clientes INNER JOIN end_clientes ON clientes.id = end_clientes.id_cliente INNER JOIN login_clientes ON clientes.id = login_clientes.id_cliente WHERE clientes.id = ".$ID.";");
     $row_conta = $select->fetch_assoc();
-
-    // Código que adiciona as Informações de Endereço no banco de dados
-    if(isset($_POST['end'])){
-        $logradouro = $_POST['logradouro'];
-        $numero = $_POST['numero'];
-        $cidade = $_POST['cidade'];
-        $uf = $_POST['uf'];
-    }
     
     //código busca o cep
     if(isset($_POST['cep'])){
@@ -32,6 +24,30 @@
             $uf = isset($data['uf']) ? $data['uf'] : '';
         }
     }
+
+    // Código que adiciona as Informações de Endereço no banco de dados
+    if(isset($_POST['end'])){
+        print_r($_POST['end']);
+        $cep = $_POST['cep_end'];
+        $logradouro = $_POST['logradouro'];
+        $numero = $_POST['numero'];
+        $cidade = $_POST['cidade'];
+        $uf = $_POST['uf'];
+
+        $sql_end = "UPDATE End_clientes 
+        set logradouro = '$logradouro',
+        numero = '$numero',
+        cidade = '$cidade',
+        uf = '$uf',
+        cep = '$cep'
+        WHERE id_cliente = ".$_SESSION['Id'].";";
+
+        $resultadoEnd = $conn->query($sql_end);
+        if($resultadoEnd){
+            header('location: conta.php');
+        }
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -76,8 +92,9 @@
             <br>
             <!-- Formulário Endereço -->
             <div>
-                <form action="conta.php" method="post" enctype="multipart/form-data">
+                <form action="conta.php" method="post" enctype="multipart/form-data" onsubmit="return validaForm()">
                     <div class="d-flex justify-content-center">
+                        <input name="cep_end" id="cep_end" value="<?php if(isset($cep)) { echo $cep; } ?>" type="text" hidden>
                         <div class="form__group field">
                             <input type="input" maxlength="100" class="form__field" name="logradouro" id="logradouro" placeholder="Logradouro" value="<?php echo $row_conta['logradouro'];?>" required="">
                             <label for="name" class="form__label">Logradouro</label>
@@ -94,7 +111,12 @@
                             <input type="input" maxlength="100" class="form__field" name="uf" id="uf" placeholder="UF" value="<?php echo $row_conta['uf'];?>" required="">
                             <label for="name" class="form__label">UF</label>
                         </div>
-                        <button type="submit" name="end"></button>
+                        <button type="submit" name="end" id="end_btn" style="margin-left: 20px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                            </svg>
+                        </button>
                     </div>
                 </form>
             </div>
