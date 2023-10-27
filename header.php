@@ -31,7 +31,7 @@
                             <li>
                                 <div class="d-flex" >
                                     <div>
-                                        <a class="dropdown-item" href="#">Conta</a>
+                                        <a class="dropdown-item" href="client/index.php">Conta</a>
                                         <a class="dropdown-item" href="#">Meu Carrinho</a>
                                         <a class="dropdown-item" href="#">Notificações</a>
                                     </div>

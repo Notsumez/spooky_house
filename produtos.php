@@ -1,4 +1,5 @@
 <?php 
+    include 'verifica_session.php';
     include 'connection/connect.php';
 
     $select = $conn->query("SELECT * FROM Produtos;");
