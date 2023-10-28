@@ -47,8 +47,6 @@
                 // limita o hash a 5 caracteres
                 $cpf_final = substr($cpf_quase_final, 0, 5);
                 $senha_criptografada = 'Cli' . $selectCpfId . $hash_md5_12 . 'Spooky-' . $cpf_final;  
-            
-                echo $senha_criptografada;
 
                 $select_Senha = $conn->query("SELECT senha FROM Login_clientes where id_cliente = '$selectCpfId'");
                 $row_Senha = $select_Senha->fetch_assoc();
