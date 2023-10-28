@@ -162,7 +162,7 @@ CREATE TABLE Login_funcionarios(
 
 -- Inserir dados na tabela Clientes
 INSERT INTO Clientes (nome, email, cpf, telefone, imagem) VALUES
-('Pactw', 'pequitw@gmail.com', '123.456.789-01', 1234567890, 'imagem1.jpg'),
+('Pactw', 'pequitw@gmail.com', '123.456.789-01', 1234567890, 'galo_foda.jpg'),
 ('Viniccius13', 'vnccs13@gmail.com', '234.567.890-12', 2345678901, 'imagem2.jpg'),
 ('Rezendeevil', 'rezendeevil@gmail.com', '345.678.901-23', 3456789012, 'imagem3.jpg'),
 ('AuthenticGames', 'authentic@gmail.com', '377.678.901-23', 3456789012, 'imagem3.jpg');
@@ -280,3 +280,7 @@ INSERT INTO Login_funcionarios (senha, id_func) VALUES
 ('FUN1202cb962Spooky-c4ded', 1),
 ('FUN2202cb962Spooky-099eb', 2),
 ('FUN3202cb962Spooky-1e01b', 3);
+
+select * from clientes;
+select * from login_clientes;
+select * from end_clientes;

@@ -1,0 +1,176 @@
+.form {
+    --black: #000000;
+    --ch-black: #141414;
+    --eer-black: #1b1b1b;
+    --night-rider: #2e2e2e;
+    --white: #ffffff;
+    --af-white: #f3f3f3;
+    --ch-white: #e1e1e1;
+    --tomato: #fa5656;
+    font-family: Helvetica, sans-serif;
+    padding: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 420px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    overflow: hidden;
+    color: var(--af-white);
+    background-color: var(--black);
+    border-radius: 8px;
+    position: relative;
+    -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, .1);
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, .1);
+  }
+  
+  /*----heading and description-----*/
+  
+  .info {
+    margin-bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+  
+  .description {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  
+  /*----input-fields------*/
+  
+  .form .input-fields {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .form .input-fields input {
+    height: 2.5em;
+    width: 2.5em;
+    outline: none;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5rem;
+    color: var(--af-white);
+    border-radius: 5px;
+    border: 2.5px solid var(--eer-black);
+    background-color: var(--eer-black);
+  }
+  
+  .form .input-fields input:focus {
+    border: 1px solid var(--af-white);
+    -webkit-box-shadow: inset 10px 10px 10px rgba(0, 0, 0, .15);
+            box-shadow: inset 10px 10px 10px rgba(0, 0, 0, .15);
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  
+  /*-----verify and clear buttons-----*/
+  
+  .action-btns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 20px;
+    gap: 0.5rem;
+  }
+  
+  .verify {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--night-rider);
+    text-shadow: none;
+    background: var(--af-white);
+    -webkit-box-shadow: transparent;
+            box-shadow: transparent;
+    border: 1px solid var(--af-white);
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+  
+  .verify:hover,.verify:focus {
+    color: var(--night-rider);
+    background: var(--white);
+  }
+  
+  .clear {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ch-white);
+    text-shadow: none;
+    background: transparent;
+    border: 1px solid var(--ch-white);
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+  
+  .clear:hover,.clear:focus {
+    color: var(--tomato);
+    background-color: transparent;
+    border: 1px solid var(--tomato);
+  }
+  
+  /*-----close button------*/
+  
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: var(--night-rider);
+    color: var(--ch-white);
+    height: 30px;
+    width: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
+  }
+  
+  .close:hover {
+    background-color: var(--tomato);
+    color: var(--white);
+  }
