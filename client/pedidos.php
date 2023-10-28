@@ -3,7 +3,7 @@
     include '../verifica_session.php';
     
     $ID = $_SESSION['Id'];
-    $select = $conn->query("SELECT * FROM Produtos P JOIN Item_pedido IP ON P.id = IP.id_produto JOIN Pedidos PD ON IP.id_pedido = PD.id WHERE PD.id_cliente = '$ID';");
+    $select = $conn->query("SELECT *, P.id as id_produto, P.nome as nome_produto, P.imagem as img_produto FROM Produtos P JOIN Item_pedido IP ON P.id = IP.id_produto JOIN Pedidos PD ON IP.id_pedido = PD.id WHERE PD.id_cliente = '$ID';");
     $row = $select->fetch_assoc();
 
 ?>
@@ -33,7 +33,8 @@
     <img src="../images/elementos/shape-bg.png" class="shape_bg">
 
     <main>
-        <div class="container">
+        <div class="container" style="margin-top: 50px; margin-bottom: 80px;">
+            <h1 class="text-light text-center">Itens de pedido</h1>
             <table class="table table-hover table-condensed" id="tabela_carrinho">
                 <thead>
                     <tr>
@@ -43,33 +44,56 @@
                         <th style="color: white;">Preço</th>
                         <th style="color: white;">Status</th>
                         <th style="color: white;">Quantidade</th>
-                        <th style="color: white;">Data</th>
-                        
+                        <th style="color: white;">Previsão</th>
+                        <th style="color: white;">Imagem</th>
+                        <th class="d-flex">
+                            <a href="adicionar_carrinho.php" target="_self" class="btn btn-block btn-xs" style="background-color: #38B6FF;" role="button">
+                                <ion-icon name="add-circle-outline"></ion-icon>
+                                <span class="hidden-xs">ADICIONAR</span>
+                            </a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Estrutura de Repetição -->
                     <?php do {?>
                         <tr>
-                            <td hidden><?php echo $row['id'];?></td>
-                            <td style="color: white;"><?php echo $row[''];?></td>
+                            <td hidden><?php echo $row['id_produto'];?></td>
+                            <td style="color: white;"><?php echo $row['nome_produto'];?></td>
                             <td style="color: white;"><?php echo $row['resumo'];?></td>
                             <td style="color: white;"><?php echo $row['preco'];?></td>
-                            <td style="color: white;"><?php echo $row['data_adicao'];?></td>
+                            <td style="color: white;"><?php echo $row['status'];?></td>
                             <td style="color: white;"><?php echo $row['quantidade'];?></td>
+                            <td style="color: white;"><?php echo $row['data'];?></td>
                             <td style="color: white;"><img src="../images/Fantasias/<?php echo $row['img_produto'];?>" style="max-width: 50px;" alt=""></td>
                             <td>
-                                <a data-toggle="modal" data-target="#modal_remover_item" role="button" class="btn btn-block btn-xs" style="background-color: #c4302b; margin-bottom: 10px;"> 
-                                    <ion-icon name="refresh-outline"></ion-icon>
-                                    <span class="hidden-xs">REMOVER</span>
-                                </a>  
-                                <a href="../detalhes.php" role="button" class="btn btn-block btn-xs" style="background-color: #f8741d;"> 
-                                    <ion-icon name="refresh-outline"></ion-icon>
-                                    <span class="hidden-xs">DETALHES</span>
-                                </a>  
+                                <?php if ($row['status'] == 'Em andamento'){?>
+                                    <a href="../detalhes.php" role="button" class="btn btn-block btn-xs" style="background-color: #f8741d; margin-bottom: 5px"> 
+                                        <ion-icon name="refresh-outline"></ion-icon>
+                                        <span class="hidden-xs">DETALHES</span>
+                                    </a>   
+                                    <a data-toggle="modal" data-target="#modal_remover_item" role="button" class="btn btn-block btn-xs" style="background-color: #c4302b; margin-bottom: 10px;"> 
+                                        <ion-icon name="refresh-outline"></ion-icon>
+                                        <span class="hidden-xs">CANCELAR</span>
+                                    </a>  
+                                <?php }elseif ($row['status'] == 'Concluido'){?>
+                                    <a href="../detalhes.php" role="button" class="btn btn-block btn-xs" style="background-color: #f8741d;"> 
+                                        <ion-icon name="refresh-outline"></ion-icon>
+                                        <span class="hidden-xs">DETALHES</span>
+                                    </a>  
+                                <?php }elseif ($row['status'] == 'Cancelado'){?>
+                                    <a href="#">
+
+                                    </a>
+                                <?php }else{?>
+                                    <a data-toggle="modal" data-target="#modal_remover_item" role="button" class="btn btn-block btn-xs" style="background-color: #c4302b; margin-bottom: 10px;"> 
+                                        <ion-icon name="refresh-outline"></ion-icon>
+                                        <span class="hidden-xs">CANCELAR</span>
+                                    </a>  
+                                <?php }?>
                             </td>
                         </tr>
-                    <?php }while($row_carrinho = $select->fetch_assoc())?> <!-- Fim da Estrutura de repetição -->
+                    <?php }while($row = $select->fetch_assoc())?> <!-- Fim da Estrutura de repetição -->
                 </tbody>
                 <tfoot>
                     <tr>
@@ -77,9 +101,11 @@
                         <th style="color: white;">Produto</th>
                         <th style="color: white;">Resumo</th>
                         <th style="color: white;">Preço</th>
-                        <th style="color: white;">Adição</th>
+                        <th style="color: white;">Status</th>
                         <th style="color: white;">Quantidade</th>
+                        <th style="color: white;">Previsão</th>
                         <th style="color: white;">Imagem</th>
+                        <th></th>
                     </tr>
                 </tfoot>
             </table>

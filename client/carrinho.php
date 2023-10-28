@@ -40,10 +40,10 @@
     <noscript>Este site necessita de javascript para funcionar.</noscript>
 
     <main class="container">
-            <br>
-            <h2 class="text-center" style="color: #f8741d;">Itens adicionados ao carrinho</h2>
-            <br>
-            <div class="border-bottom border-2 border-dark" style="width: 97%; margin-left: 15px; margin-bottom: 10px;"></div>
+        <br>
+        <h2 class="text-center" style="color: #f8741d;">Itens adicionados ao carrinho</h2>
+        <br>
+        <div class="border-bottom border-2 border-dark" style="width: 97%; margin-left: 15px; margin-bottom: 10px;"></div>
             <table class="table table-hover table-condensed" id="tabela_carrinho">
                 <thead>
                     <tr>

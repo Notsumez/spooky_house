@@ -14,7 +14,7 @@
 
         $resultadofav = $conn->query($sql_fav);
         if($resultadofav){
-            header('location: carrinho.php?upd=s');
+            // header('location: carrinho.php?upd=s');
         }
     }
 ?>
