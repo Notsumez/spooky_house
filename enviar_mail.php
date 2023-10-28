@@ -37,7 +37,7 @@
         $mail->addAddress($email, 'Spooky House'); //ADM
             
         $mail->isHTML(true);                                 
-        $mail->Subject = "Mensagem de andrey";
+        $mail->Subject = "Código de Recuperação";
         $mail->Body = "$mensagem";
             
         $mail->send(); 
