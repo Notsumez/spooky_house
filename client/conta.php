@@ -43,7 +43,7 @@
 
         $resultadoEnd = $conn->query($sql_end);
         if($resultadoEnd){
-            header('location: conta.php');
+            header('location: conta.php?upd=s');
         }
     }
 
@@ -55,11 +55,11 @@
         $sql_info = "UPDATE Clientes
         set email = '$email',
         telefone = '$telefone'
-        WHERE id = ".$ID.";";
+        WHERE id = ".$_SESSION['Id'].";";
 
         $resultadoInfo = $conn->query($sql_info);
         if($resultadoInfo){
-            header('location: conta.php');
+            header('location: conta.php?upd=s');
         }
     }
     
@@ -150,15 +150,16 @@
                         <div class="d-flex justify-content-center">
                             <div class="form__group field">
                                 <input type="email" maxlength="120" class="form__field" name="email" id="email" placeholder="Email" value="<?php echo $row_conta['email'];?>" required="">
-                                <label for="name" class="form__label">Email</label>
+                                <label for="email" class="form__label">Email</label>
                             </div>
                             <div class="form__group field" style="margin-left: 20px;">
                                 <input type="text" maxlength="14" class="form__field" name="CPF" id="CPF" placeholder="CPF" value="<?php echo $row_conta['cpf'];?>" onkeypress="$(this).mask('000.000.000-00');" disabled>
-                                <label for="name" class="form__label">CPF</label>
+                                <label for="CPF" class="form__label">CPF</label>
                             </div>
+                            <!-- TELEFONE -->
                             <div class="form__group field" style="margin-left: 20px;">
-                                <input type="text" maxlength="14" class="form__field" name="telefone" id="telefone" placeholder="Telefone" value="<?php echo $row_conta['telefone'];?>" onkeypress="$(this).mask('(00)00000-0000');" required="">
-                                <label for="name" class="form__label">Telefone</label>
+                                <input type="tel" maxlength="14" class="form__field" name="telefone" id="telefone" placeholder="Telefone" value="<?php echo $row_conta['telefone'];?>" required="">
+                                <label for="telefone" class="form__label">Telefone</label>
                             </div>
                             <button type="submit" name="info" id="info_btn" style="margin-left: 20px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -177,6 +178,35 @@
             </div>
         </div>
     </main>
+
+    <!-- Modal não encontrou cep -->
+    <div class="modal fade" id="modal_cep_n" tabindex="-1" role="dialog" aria-labelledby="modal_cep_n_centro" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-title" id="modal_cep_n_titulo" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <img c src="../images/logo_areas.png" width="100vw" alt="">
+                        <h5>Buscar CEP</h5>
+                        <button style="background-color: white; border: none;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><ion-icon style="color: black; font-size: 2vw;" name="close-outline"></ion-icon></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center">Erro ao buscar CEP. Verifique se o CEP digitado está correto.</p>        
+                        <div style="display: flex; justify-content: end;">
+                            <button  type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- código para o Modal não encontrou cep -->
+        <?php if(isset($_GET['cep']) && ($_GET['cep'] == "n")){?>
+            <script>
+                $(document).ready(function() {
+                    $('#modal_cep_n').modal('show');
+                });
+            </script>
+        <?php }?>  
     
     <?php include 'footer.php';?>
 </body>

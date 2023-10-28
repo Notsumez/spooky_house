@@ -1,0 +1,18 @@
+#fav{
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+#fav:hover{
+    transform: scale(1.2);
+}
+
+#fav-alt{
+    transition: transform 0.3s;
+    cursor: pointer;
+    display: none;
+}
+
+#fav-alt:hover{
+    transform: scale(1.2);
+}
