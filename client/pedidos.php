@@ -22,40 +22,60 @@
 
     <main>
         <div class="container">
-            
-        <?php do {?>
-            <table class="table" id="tabela_pedidos">
+            <table class="table table-hover table-condensed" id="tabela_carrinho">
                 <thead>
                     <tr>
-                        <th scope="col">Pedido</th>
-                        <th scope="col">Resumo</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Data</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Tema</th>
+                        <th hidden>ID</th>
+                        <th style="color: white;">Produto</th>
+                        <th style="color: white;">Resumo</th>
+                        <th style="color: white;">Preço</th>
+                        <th style="color: white;">Adição</th>
+                        <th style="color: white;">Quantidade</th>
+                        <th style="color: white;">Imagem</th>
+                        <th class="d-flex">
+                            <a href="adicionar_carrinho.php" target="_self" class="btn btn-block btn-xs" style="background-color: #38B6FF;" role="button">
+                                <ion-icon name="add-circle-outline"></ion-icon>
+                                <span class="hidden-xs">ADICIONAR</span>
+                            </a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    <!-- Estrutura de Repetição -->
+                    <?php do {?>
+                        <tr>
+                            <td hidden><?php echo $row_carrinho['id'];?></td>
+                            <td style="color: white;"><?php echo $row_carrinho['nome_produto'];?></td>
+                            <td style="color: white;"><?php echo $row_carrinho['resumo'];?></td>
+                            <td style="color: white;"><?php echo $row_carrinho['preco'];?></td>
+                            <td style="color: white;"><?php echo $row_carrinho['data_adicao'];?></td>
+                            <td style="color: white;"><?php echo $row_carrinho['quantidade'];?></td>
+                            <td style="color: white;"><img src="../images/Fantasias/<?php echo $row_carrinho['img_produto'];?>" style="max-width: 50px;" alt=""></td>
+                            <td>
+                                <a data-toggle="modal" data-target="#modal_remover_item" role="button" class="btn btn-block btn-xs" style="background-color: #c4302b; margin-bottom: 10px;"> 
+                                    <ion-icon name="refresh-outline"></ion-icon>
+                                    <span class="hidden-xs">REMOVER</span>
+                                </a>  
+                                <a href="../detalhes.php" role="button" class="btn btn-block btn-xs" style="background-color: #f8741d;"> 
+                                    <ion-icon name="refresh-outline"></ion-icon>
+                                    <span class="hidden-xs">DETALHES</span>
+                                </a>  
+                            </td>
+                        </tr>
+                    <?php }while($row_carrinho = $select->fetch_assoc())?> <!-- Fim da Estrutura de repetição -->
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th hidden>ID</th>
+                        <th style="color: white;">Produto</th>
+                        <th style="color: white;">Resumo</th>
+                        <th style="color: white;">Preço</th>
+                        <th style="color: white;">Adição</th>
+                        <th style="color: white;">Quantidade</th>
+                        <th style="color: white;">Imagem</th>
+                    </tr>
+                </tfoot>
             </table>
-        <?php }while ($row = $select->fetch_assoc()); ?>
         </div>
     </main>
     
