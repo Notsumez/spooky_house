@@ -122,6 +122,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <!-- Link para o CSS -->
     <link rel="stylesheet" href="CSS/login.css">
+    <link rel="shortcut icon" href="images/Elementos/favicon.png" type="image/x-png">
     <title>Login - Spooky House</title>
 </head>
 <body class="fundo_login">
