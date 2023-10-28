@@ -35,8 +35,12 @@
                                         <a class="dropdown-item" href="#">Meu Carrinho</a>
                                         <a class="dropdown-item" href="#">Notificações</a>
                                     </div>
+                                    <?php 
+                                        $sql_header = $conn->query("SELECT imagem FROM Clientes WHERE id = ".$_SESSION['Id'].";");
+                                        $row = $sql_header->fetch_assoc();
+                                    ?>
                                     <a href="">
-                                        <img src="images/perfil/galo_foda.jpg" width="100%" alt="" style="border: 1px solid white; border-radius: 20px;">
+                                        <img src="images/perfil/<?php echo $row['imagem']; ?>" width="100%" alt="" style="border: 1px solid white; border-radius: 20px;">
                                     </a>
                                 </div>
                             </li>

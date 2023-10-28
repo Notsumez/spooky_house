@@ -1,5 +1,4 @@
 <?php
-
     $cpf = md5($_POST['cpf']);
     $cpf_ = $_POST['cpf'];
     $email = $_POST['email'];
