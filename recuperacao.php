@@ -10,8 +10,6 @@
 
     // Conexão com o banco de dados
     include 'connection/connect.php';
-
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -36,19 +34,22 @@
     <main style="padding: 50px;">
         <div class="form-container inflar">
             <p class="title Sometype">Recuperação de Conta</p>
-            <form action="login.php" method="post" class="form">
+            <p class="text-white text-center"> Digite suas informações de acordo com o que foi preenchido no cadastro.</p>
+            <form action="enviar_mail.php" method="post" class="form" enctype="multipart/form-data">
                 <div class="input-group">
                     <label for="cpf">CPF</label>
                     <input type="text" name="cpf" id="cpf" onkeypress="$(this).mask('000.000.000-00');" placeholder="">
                 </div>
                 <div class="input-group">
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" id="senha" placeholder="">
-                    <div class="forgot">
-                        <a rel="noopener noreferrer" href="recuperacao.php">Esqueceu sua senha ?</a>
-                    </div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="">
                 </div>
-                <button class="sign">Entrar</button>
+                <div class="input-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" name="telefone" id="telefone" placeholder="">
+                </div>
+                <br>
+                <button type="submit" name="codBTN" class="sign">Enviar Código</button>
             </form>
             <br>
             <p class="signup">Não tem uma conta?
