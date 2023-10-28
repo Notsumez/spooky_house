@@ -167,9 +167,6 @@ INSERT INTO Clientes (nome, email, cpf, telefone, imagem) VALUES
 ('Rezendeevil', 'rezendeevil@gmail.com', '345.678.901-23', 3456789012, 'imagem3.jpg'),
 ('AuthenticGames', 'authentic@gmail.com', '377.678.901-23', 3456789012, 'imagem3.jpg');
 
-
-
-
 -- Inserir dados na tabela End_clientes
 INSERT INTO End_clientes (logradouro, numero, cidade, uf, cep, id_cliente) VALUES
 ('Rua A, 123', 456, 'Cidade A', 'AA', '12345-678', 1),
@@ -235,13 +232,20 @@ INSERT INTO Produtos_temas (id_produto, id_tema) VALUES
 INSERT INTO Pedidos (id_cliente, status, data) VALUES
 (1, 'Em andamento', '2023-10-23'),
 (2, 'Concluido', '2023-10-22'),
-(3, 'Em andamento', '2023-10-21');
+(3, 'Em andamento', '2023-10-21'),
+(1, 'Concluido', '2023-10-21'),
+(1, 'Cancelado', '2023-10-21'),
+(1, 'Em andamento', '2023-10-21');
 
 -- Inserir dados na tabela Item_pedido
 INSERT INTO Item_pedido (id_pedido, id_produto, quantidade) VALUES
 (1, 1, 2),
 (2, 2, 1),
-(3, 3, 3);
+(3, 3, 3),
+(4, 4, 3),
+(5, 5, 3),
+(6, 6, 3);
+
 
 -- Inserir dados na tabela Comentarios
 INSERT INTO Comentarios (comentario, avaliacao, id_cliente, id_produto) VALUES
@@ -284,6 +288,6 @@ INSERT INTO Login_funcionarios (senha, id_func) VALUES
 ('FUN2202cb962Spooky-099eb', 2),
 ('FUN3202cb962Spooky-1e01b', 3);
 
-select * from clientes;
+select * from produtos;
 select * from login_clientes;
 select * from end_clientes;
