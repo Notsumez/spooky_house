@@ -3,12 +3,12 @@
     include '../verifica_session.php';
     
     $ID = $_SESSION['Id'];
-    $select = $conn->query("SELECT * FROM Pedidos INNER JOIN Item_pedido ON PEDIDOS.ID = Item_pedido.id_pedido WHERE id_cliente = '$ID'; ");
+    $select = $conn->query("SELECT * FROM Produtos P JOIN Item_pedido IP ON P.id = IP.id_produto JOIN Pedidos PD ON IP.id_pedido = PD.id WHERE PD.id_cliente = '$ID';");
     $row = $select->fetch_assoc();
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
