@@ -167,6 +167,7 @@ INSERT INTO Clientes (nome, email, cpf, telefone, imagem) VALUES
 ('Rezendeevil', 'rezendeevil@gmail.com', '345.678.901-23', 3456789012, 'imagem3.jpg'),
 ('AuthenticGames', 'authentic@gmail.com', '377.678.901-23', 3456789012, 'imagem3.jpg');
 
+
 -- Inserir dados na tabela End_clientes
 INSERT INTO End_clientes (logradouro, numero, cidade, uf, cep, id_cliente) VALUES
 ('Rua A, 123', 456, 'Cidade A', 'AA', '12345-678', 1),
