@@ -33,7 +33,6 @@
                                     <div>
                                         <a class="dropdown-item" href="client/index.php">Conta</a>
                                         <a class="dropdown-item" href="#">Meu Carrinho</a>
-                                        <a class="dropdown-item" href="#">Notificações</a>
                                     </div>
                                     <?php 
                                         $sql_header = $conn->query("SELECT imagem FROM Clientes WHERE id = ".$_SESSION['Id'].";");
@@ -44,7 +43,6 @@
                                     </a>
                                 </div>
                             </li>
-                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Pedidos em Andamento</a></li>
                             <hr style="color: white;">
                             <form method="post">

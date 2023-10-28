@@ -21,9 +21,6 @@
                         <a class="nav-link" id="Sometype" href="carrinho.php">Carrinho</a> 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="notificacoes.php">Notificações</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" id="Sometype" href="pedidos.php">Pedidos</a>
                     </li>
                     <li class="nav-item">
