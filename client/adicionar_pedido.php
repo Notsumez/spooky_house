@@ -6,6 +6,27 @@
     $select = $conn->query("SELECT *, P.id as id_produto, P.nome as nome_produto, P.imagem as img_produto FROM Produtos P JOIN Item_pedido IP ON P.id = IP.id_produto JOIN Pedidos PD ON IP.id_pedido = PD.id;");
     $row = $select->fetch_assoc();
 
+    $select_id = $conn->query("SELECT cpf FROM Clientes WHERE id = '".$_SESSION['Id']."';");
+    $row_id = $select_id->fetch_assoc();
+
+    if (isset($_POST['addBTN'])){
+        $cpf = $_POST['cpf_cli'];
+        $descricao = $_POST['descricao'];
+        $preco = $_POST['preco'];
+        $quantidade = $_POST['quantidade'];
+
+        echo $cpf;
+        echo $descricao;
+        echo $preco;
+        echo $quantidade;
+    }
+
+
+    if (isset($_POST['card_prod'])){
+        $produto = $_POST['nome'];
+        $resumo = $_POST['resumo'];
+        $preco = $_POST['preco'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -22,6 +43,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <!-- Link para o CSS -->
     <link rel="stylesheet" href="../CSS/login.css">
+    <link rel="stylesheet" href="../CSS/style.css">
     <link rel="shortcut icon" href="../images/Elementos/favicon.png" type="image/x-png">
     <title>Adicionar Pedidos - Spooky House</title>
 </head>
@@ -29,26 +51,26 @@
     <main style="padding: 50px;">
         <div class="form-container inflar">
             <p class="title Sometype">Adicionar Pedido!!</p>
-            <img src="images/Elementos/<?php  ?>" style="width: 100%;" alt="">
-            <form action="adicionar_pedido.php" method="post" enctype="multipart/form-data">
+            <!-- Adicione um identificador único ao formulário -->
+            <form action="adicionar_pedido.php" method="post" enctype="multipart/form-data" id="pedidoForm">
                 <div class="input-group d-flex" style="flex-direction: column;">
                     <label for="ep">Escolher Produto</label>
                     <input type="text" name="ep" id="ep" placeholder="" hidden>
-                    <button data-toggle="modal" data-target="#modal_escolher" class="btn" style="background-color: #F9E4B7;">Navegar</button>
+                    <a role="button" data-toggle="modal" data-target="#modal_escolher" class="btn" style="background-color: #F9E4B7;">Navegar</a>
                 </div>
             </form>
-            <form action="login.php" method="post" class="form">
+            <form action="adicionar_pedido.php" method="post" class="form" enctype="multipart/form-data">
                 <div class="input-group">
-                    <label for="cpf">Digite o seu CPF</label>
-                    <input type="password" name="cpf" id="cpf" onkeypress="$(this).mask('000.000.000-00');" placeholder="">
+                    <label for="cpf">CPF</label>
+                    <input type="text" name="cpf_cli" id="cpf_cli" onkeypress="$(this).mask('000.000.000-00');" value="<?php echo $row_id['cpf'];?>" placeholder="" disabled required>
                 </div>
                 <div class="input-group">
-                    <label for="cpf">Descrição</label>
-                    <input type="password" name="cpf" id="cpf" placeholder="">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" name="descricao" id="descricao" placeholder="" value="<?php echo $resumo; ?>" disabled required>
                 </div>
                 <div class="input-group">
-                    <label for="cpf">Preço</label>
-                    <input type="password" name="cpf" id="cpf" placeholder="">
+                    <label for="preco">Preço</label>
+                    <input type="text" name="preco" id="preco" value="<?php echo $preco; ?>" placeholder="" disabled required>
                 </div>
                 <div class="input-group">
                     <label for="quantidade">Quantidade</label>
@@ -59,29 +81,65 @@
                     </div>
                 </div>
                 <br>
-                <button class="sign">Adicionar</button>
+                <button class="sign" type="submit" name="addBTN">Adicionar</button>
             </form>
             <br>
-            <p class="signup">Não tem uma conta?
-                <a rel="noopener noreferrer" href="cadastro.php" class="">Inscreva-se</a>
-            </p>
         </div>
     </main>
 
-    <!-- ==================================== MODAL ====================================== -->
+    <!-- ======================================= MODAL ================================================ -->
     <div class="modal fade" tabindex="-1" id="modal_escolher">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">ATENÇÃO !</h5>
-                    <button type="button" class="btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header d-flex justify-content-center">
+                    <h2 class="modal-title">Produtos</h2>
                 </div>
                 <div class="modal-body">
-                    <p>Senha ou CPF incorretos.</p>
+                    <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                        <?php
+                            $first = true;
+                            do {
+                            $activeClass = $first ? 'active' : '';
+                        ?>
+                        <form action="adicionar_pedido.php" method="post" enctype="multipart/form-data">
+                            <div class="carousel-item <?php echo $activeClass; ?>" style="margin-left: 80px;">
+                                <div class="card card_destaque" style="width: 18rem; margin-right: 20px; margin-bottom: 20px; margin-top: 20px; flex: 0 0 calc(25% - 20px);">
+                                    <img src="../images/Fantasias/<?php echo $row['img_produto'];?>" class="card-img-top" style="max-height: 250px;" alt="<?php echo $row['imagem'];?>">
+                                    <div class="card-body">
+                                        <input type="text" name="nome" id="nome" value="<?php echo $row['nome_produto'];?>" hidden>
+                                        <h5 class="card-title"><?php echo $row['nome_produto'];?></h5>
+                                        <input type="text" name="resumo" id="resumo" value="<?php echo $row['resumo'];?>" hidden>
+                                        <p class="card-text"><?php echo $row['resumo'];?></p>
+                                        <input type="text" name="preco" id="preco" value="<?php echo $row['preco'];?>" hidden>
+                                        <p class="card-text">Preço: <?php echo $row['preco']; ?></p>
+                                        <?php if ($row['destaque'] == 'Sim'){ ?>
+                                            <button type="button" class="btn" style="color: white;" disabled>DESTAQUE</button>
+                                        <?php } ?>
+                                        <button role="button" type="submit" name="card_prod" class="btn float-right" style="background-color: #f8741d;">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    <?php
+                        $first = false;
+                        } while ($row = $select->fetch_assoc());
+                    ?>
+                    </div>
+                    <a class="carousel-control-prev" href="#cardCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#cardCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 </body>
     <!-- Link para Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -89,10 +147,10 @@
     <script src="js/script.js"></script>
     <!-- codigo que preenche os campos-->
     <script>
-        document.getElementById('logradouro').value = '<?php echo $logradouro; ?>'; 
-        document.getElementById('cidade').value = '<?php echo $cidade; ?>';
-        document.getElementById('uf').value = '<?php echo $uf; ?>';
-        document.getElementById('numero').value = 'Digite o número'
+        document.getElementById('descricao').value = '<?php echo $resumo; ?>';
+        document.getElementById('preco').value = '<?php echo $preco; ?>';
+        // Feche o modal se necessário
+        $('#modal_escolher').modal('hide');
     </script>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
