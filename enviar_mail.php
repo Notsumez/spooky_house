@@ -1,4 +1,5 @@
 <?php
+    include 'connection/connect.php';
     $cpf = md5($_POST['cpf']);
     $cpf_ = $_POST['cpf'];
     $email = $_POST['email'];
@@ -18,6 +19,12 @@
     use PHPMailer\PHPMailer\Exception;
         
     require './lib/vendor/autoload.php';
+
+    // Consulta SQL para verificar se o CPF existe na tabela
+    $sql = "SELECT * FROM Clientes WHERE cpf = '$cpf_' AND email = '$email' AND telefone = '$telefone'";
+    $resultado = $conn->query($sql);
+
+    if ($resultado->num_rows > 0) {
 
     $mail = new PHPMailer(true);
 
@@ -46,4 +53,9 @@
         } catch (Exception $e) { ?>
         <!-- se não funcionar  -->
         <h1>nao</h1>
-<?php }?>
+    <?php }
+
+    } else {
+        // O CPF não existe no banco de dados
+        header('location: cpfNao.php');
+    }

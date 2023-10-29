@@ -28,6 +28,11 @@
   background-size: cover;
 }
 
+.fundo_erro{
+  background: url(../images/background_erro.png) no-repeat;
+  background-size: cover;
+}
+
 #decrease{
   margin-top: 8px;
   margin-right: 5px;

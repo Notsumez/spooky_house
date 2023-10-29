@@ -243,6 +243,46 @@ a{
     color: #2b1069;
 }
 
+.image-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; /* Oculta qualquer conteúdo que ultrapasse os limites da div */
+    width: 170px; /* Defina o tamanho desejado para a div */
+    margin-left: 43%;
+    margin-right: 50%;
+    cursor: pointer;
+}
+
+.profile-image {
+    border-radius: 50%;
+    max-width: 150px;
+    border: 2px solid #f8741d;
+    transition: opacity 0.3s;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.image-container:hover .profile-image {
+    opacity: 0.5; /* Diminui a opacidade da imagem quando o mouse passa por cima */
+}
+
+.image-container:hover .overlay {
+    opacity: 1; /* Torna a sobreposição visível quando o mouse passa por cima */
+}
+
 /* ============================== HEADER =================================== */
 #bg_nav {
     background-color: transparent;

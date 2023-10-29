@@ -15,7 +15,7 @@
                         <a class="nav-link active" id="Sometype" aria-current="page" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#home'; } else { echo 'index.php#home';} ?>" style="<?php if (basename($_SERVER['PHP_SELF']) == 'index.php') { echo 'color: #f8741d;'; } ?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#destaques'; } else { echo 'index.php#destaques';} ?>" style="<?php if (basename($_SERVER['PHP_SELF']) == 'pesquisar.php' && isset($_GET['destaque']) == 'sim') { echo 'color: #f8741d;'; } ?>">Destaques</a> 
+                        <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#destaques'; } else { echo 'index.php#destaques';} ?>">Destaques</a> 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#sobre'; } else { echo 'index.php#sobre';} ?>">Sobre</a>
