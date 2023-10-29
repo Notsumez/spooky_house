@@ -1,15 +1,6 @@
 <?php
     include 'connection/connect.php';
     include 'verifica_session.php';
-
-    if (isset($_POST['logout'])) {
-        // Destrua a sessão
-        session_destroy();
-    
-        // Redirecione para a página de login ou qualquer outra página apropriada após o logout
-        header('Location: login.php');
-        exit;
-    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

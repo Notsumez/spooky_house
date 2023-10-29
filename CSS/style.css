@@ -416,11 +416,26 @@ a{
     transition: all 0.475s;
   }
 
-/* ============================== PEDIDOS =================================== */
-  tabela{
-        background-color: #181818;
-        
+/* ============================== Categorias =================================== */
+.box a {
+    transition: transform .3s;  
   }
+  
+  .box a:hover {
+    transition: transform .3s;
+    -ms-transform: scale(1.4);
+    -webkit-transform: scale(1.4);  
+    transform: scale(1.4);
+  }
+
+#btnVer{
+    color: white;
+}
+
+#btnVer:hover{
+    color: #f8741d;
+}
+
 /* ============================== FOOTER =================================== */
 footer{
     background-color: #181818;

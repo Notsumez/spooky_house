@@ -3,12 +3,18 @@
 
     $ID = $_GET['id'];
 
-    $sql = "UPDATE Pedidos
-        SET status = 'Cancelado', data_cancel = NOW()
+    $sql_item = "DELETE FROM Item_pedido
+        WHERE id_pedido = '$ID';";
+
+    $resultado_item = $conn->query($sql_item);
+
+    $sql = "DELETE FROM Pedidos
         WHERE id = '$ID';";
 
     $resultado = $conn->query($sql);
-    if ($resultado){
+    if ($resultado && $resultado_item){
         header('location: pedidos.php');
+    }else{
+        echo "não passou";
     }
 ?>

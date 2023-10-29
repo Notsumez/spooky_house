@@ -2,14 +2,6 @@
     include '../connection/connect.php';
     include '../verifica_session.php';
 
-    //Código que verifica o tempo de cancelamento
-    $cincoMin = strtotime('-5 minutes');
-
-    // Construct and execute a query to delete canceled orders that were canceled more than 5 minutes ago
-    $sql = "DELETE FROM Pedidos
-            WHERE status = 'Cancelado' AND data_cancel <= '" . date('Y-m-d H:i:s', $cincoMin) . "';";
-
-    
     $ID = $_SESSION['Id'];
     $select = $conn->query("SELECT *, PD.id as id_pedido, P.id as id_produto, P.nome as nome_produto, P.imagem as img_produto FROM Produtos P JOIN Item_pedido IP ON P.id = IP.id_produto JOIN Pedidos PD ON IP.id_pedido = PD.id WHERE PD.id_cliente = '$ID';");
     $row = $select->fetch_assoc();
@@ -147,5 +139,10 @@
         </div>
     </div>
 </body>
+    <!-- Scroll Reveal -->
+    <script src="../js/scrollReveal.js"></script>
+    <!-- Link para Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Link para as funções JavaScript -->
+    <script src="../js/script.js"></script>
 </html>
