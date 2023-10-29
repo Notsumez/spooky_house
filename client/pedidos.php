@@ -47,7 +47,7 @@
                         <th style="color: white;">Previsão</th>
                         <th style="color: white;">Imagem</th>
                         <th class="d-flex">
-                            <a href="adicionar_carrinho.php" target="_self" class="btn btn-block btn-xs" style="background-color: #38B6FF;" role="button">
+                            <a href="adicionar_pedido.php" target="_self" class="btn btn-block btn-xs" style="background-color: #38B6FF;" role="button">
                                 <ion-icon name="add-circle-outline"></ion-icon>
                                 <span class="hidden-xs">ADICIONAR</span>
                             </a>

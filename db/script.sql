@@ -31,7 +31,6 @@ CREATE TABLE Funcionarios(
     telefone int(11) not null,
     periodo varchar(20) not null,
     funcao varchar(34) not null,
-    nivel enum('adm','func') not null,
     ativo bit not null,
     imagem varchar(50) not null,
     primary key(id)
@@ -174,10 +173,10 @@ INSERT INTO End_clientes (logradouro, numero, cidade, uf, cep, id_cliente) VALUE
 ('Rua C, 789', 101, 'Cidade C', 'CC', '34567-890', 3);
 
 -- Inserir dados na tabela Funcionarios
-INSERT INTO Funcionarios (nome, cpf, email, telefone, periodo, funcao, nivel, ativo, imagem) VALUES
-('Funcionario 1', '456.789.012-34', 'funcionario1@gmail.com', 1234567, 'Manhã', 'Cargo 1', 'adm', 1, 'imagem1.jpg'),
-('Funcionario 2', '567.890.123-45', 'funcionario2@gmail.com', 2345678, 'Tarde', 'Cargo 2', 'func', 1, 'imagem2.jpg'),
-('Funcionario 3', '678.901.234-56', 'funcionario3@gmail.com', 3456789, 'Noite', 'Cargo 3', 'adm', 0, 'imagem3.jpg');
+INSERT INTO Funcionarios (nome, cpf, email, telefone, periodo, funcao, ativo, imagem) VALUES
+('Funcionario 1', '456.789.012-34', 'funcionario1@gmail.com', 1234567, 'Manhã', 'Cargo 1', 1, 'imagem1.jpg'),
+('Funcionario 2', '567.890.123-45', 'funcionario2@gmail.com', 2345678, 'Tarde', 'Cargo 2', 1, 'imagem2.jpg'),
+('Funcionario 3', '678.901.234-56', 'funcionario3@gmail.com', 3456789, 'Noite', 'Cargo 3', 0, 'imagem3.jpg');
 
 -- Inserir dados na tabela Produtos
 INSERT INTO Produtos (nome, descricao, resumo, preco, quantidade, imagem, destaque) VALUES

@@ -1,5 +1,6 @@
 <?php 
     include 'connection/connect.php';
+    include 'verifica_session.php';
 
     // Se existir um item de busca digitado ele pesquisa, caso não exista ele mostra tudo
     if(isset($_GET['pesquisar'])){

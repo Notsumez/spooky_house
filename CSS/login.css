@@ -24,8 +24,23 @@
 
 
 .fundo_login{
-    background: url(../images/background.jpg) no-repeat;
-    background-size: cover;
+  background: url(../images/background.jpg) no-repeat;
+  background-size: cover;
+}
+
+#decrease{
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+#increase{
+  margin-top: 8px;
+  margin-left: 5px;
+}
+
+.fundo_pedido{
+  background: url(../images/background_pedido.png) no-repeat;
+  background-size: cover;
 }
 
 .Sometype{

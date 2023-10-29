@@ -32,18 +32,18 @@
                                 <div class="d-flex" >
                                     <div>
                                         <a class="dropdown-item" href="client/index.php">Conta</a>
-                                        <a class="dropdown-item" href="#">Meu Carrinho</a>
+                                        <a class="dropdown-item" href="client/carrinho.php">Meu Carrinho</a>
                                     </div>
                                     <?php 
                                         $sql_header = $conn->query("SELECT imagem FROM Clientes WHERE id = ".$_SESSION['Id'].";");
                                         $row = $sql_header->fetch_assoc();
                                     ?>
-                                    <a href="">
+                                    <a href="client/conta.php">
                                         <img src="images/perfil/<?php echo $row['imagem']; ?>" width="100%" alt="" style="border: 1px solid white; border-radius: 20px;">
                                     </a>
                                 </div>
                             </li>
-                            <li><a class="dropdown-item" href="#">Pedidos em Andamento</a></li>
+                            <li><a class="dropdown-item" href="client/pedidos.php">Pedidos em Andamento</a></li>
                             <hr style="color: white;">
                             <form method="post">
                                 <button type="submit" class="dropdown-item" name="logout">Sair</button>

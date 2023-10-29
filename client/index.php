@@ -1,5 +1,5 @@
 <?php 
-    include '../verifica_session.php';
+    include 'verifica_session.php';
     include '../connection/connect.php';
 
 
