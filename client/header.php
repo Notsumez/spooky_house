@@ -12,16 +12,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="index.php">Home</a>
+                        <a class="nav-link" id="Sometype" style="<?php if (basename($_SERVER['PHP_SELF']) == 'index.php') { echo 'color: #f8741d;'; } ?>" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" id="Sometype" aria-current="page" href="conta.php">Conta</a>
+                        <a class="nav-link active" id="Sometype" style="<?php if (basename($_SERVER['PHP_SELF']) == 'conta.php') { echo 'color: #f8741d;'; } ?>" aria-current="page" href="conta.php">Conta</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="carrinho.php">Carrinho</a> 
+                        <a class="nav-link" id="Sometype" href="carrinho.php" style="<?php if (basename($_SERVER['PHP_SELF']) == 'carrinho.php') { echo 'color: #f8741d;'; } ?>">Carrinho</a> 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="pedidos.php">Pedidos</a>
+                        <a class="nav-link" id="Sometype" href="pedidos.php" style="<?php if (basename($_SERVER['PHP_SELF']) == 'pedidos.php') { echo 'color: #f8741d;'; } ?>">Pedidos</a>
                     </li>
                     <li class="nav-item">
                         <form action="verifica_session.php" method="post">

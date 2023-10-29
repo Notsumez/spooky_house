@@ -12,16 +12,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" id="Sometype" aria-current="page" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#home'; } else { echo 'index.php#home';} ?>">Home</a>
+                        <a class="nav-link active" id="Sometype" aria-current="page" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#home'; } else { echo 'index.php#home';} ?>" style="<?php if (basename($_SERVER['PHP_SELF']) == 'index.php') { echo 'color: #f8741d;'; } ?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#destaques'; } else { echo 'index.php#destaques';} ?>">Destaques</a> 
+                        <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#destaques'; } else { echo 'index.php#destaques';} ?>" style="<?php if (basename($_SERVER['PHP_SELF']) == 'pesquisar.php' && isset($_GET['destaque']) == 'sim') { echo 'color: #f8741d;'; } ?>">Destaques</a> 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'index.php') { echo '#sobre'; } else { echo 'index.php#sobre';} ?>">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'produtos.php') { echo '#produtos'; } else { echo 'produtos.php#produtos';} ?>">Produtos</a>
+                        <a class="nav-link" id="Sometype" href="<?php if ($_SERVER['REQUEST_URI'] == 'produtos.php') { echo '#produtos'; } else { echo 'produtos.php#produtos';} ?>" style="<?php if (basename($_SERVER['PHP_SELF']) == 'produtos.php' || basename($_SERVER['PHP_SELF']) == 'pesquisar.php') { echo 'color: #f8741d;'; } ?>">Produtos</a>
                     </li>
                     <li class="nav-item dropdown" style="margin-right: 30px;">
                         <button class="nav-link btn_config" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

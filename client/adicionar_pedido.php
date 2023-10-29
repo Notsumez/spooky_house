@@ -3,29 +3,52 @@
      include '../verifica_session.php';
 
     
-    $select = $conn->query("SELECT *, P.id as id_produto, P.nome as nome_produto, P.imagem as img_produto FROM Produtos P JOIN Item_pedido IP ON P.id = IP.id_produto JOIN Pedidos PD ON IP.id_pedido = PD.id;");
+     $select = $conn->query("SELECT P.id as id_produto, P.nome as nome_produto, P.imagem as img_produto, P.resumo as resumo_produto, preco as preco_produto, destaque as destaque_produto
+     FROM Produtos P
+     WHERE NOT EXISTS (
+         SELECT 1
+         FROM Item_pedido IP
+         INNER JOIN Pedidos PD ON IP.id_pedido = PD.id
+         WHERE P.id = IP.id_produto AND PD.id_cliente = '".$_SESSION['Id']."'
+     );");
     $row = $select->fetch_assoc();
 
     $select_id = $conn->query("SELECT cpf FROM Clientes WHERE id = '".$_SESSION['Id']."';");
     $row_id = $select_id->fetch_assoc();
 
     if (isset($_POST['addBTN'])){
-        $cpf = $_POST['cpf_cli'];
-        $descricao = $_POST['descricao'];
-        $preco = $_POST['preco'];
+        $id = $_POST['id'];
+        $cpf = isset($_POST['cpf_cli']) ? $_POST['cpf_cli'] : null;
         $quantidade = $_POST['quantidade'];
+        
 
-        echo $cpf;
-        echo $descricao;
-        echo $preco;
-        echo $quantidade;
+        $sql = "INSERT INTO Pedidos (id_cliente, status, data) VALUES
+        ('".$_SESSION['Id']."','Solicitado',DATE_ADD(NOW(), INTERVAL 30 DAY));
+        ";
+
+        $resultado = $conn->query($sql);
+        if($resultado){
+            $id_ultimo = $conn->insert_id;
+            $sql_ped = "INSERT INTO Item_pedido (id_pedido, id_produto, quantidade) VALUES
+            ('$id_ultimo','$id','$quantidade');
+            ";
+
+            $resultado_ped = $conn->query($sql_ped);
+            if ($resultado_ped){
+                header('location: pedidos.php?add=s');
+            }
+        }else{
+            "Não passou";
+        }
     }
 
 
     if (isset($_POST['card_prod'])){
+        $Id = isset($_POST['id_prod']) ? $_POST['id_prod'] : null;
         $produto = $_POST['nome'];
         $resumo = $_POST['resumo'];
         $preco = $_POST['preco'];
+        $imagem  = $_POST['imagem'];
     }
 ?>
 <!DOCTYPE html>
@@ -51,6 +74,8 @@
     <main style="padding: 50px;">
         <div class="form-container inflar">
             <p class="title Sometype">Adicionar Pedido!!</p>
+            <img src="../images/Fantasias/<?php if(isset($imagem)) { echo $imagem; } ?>" style="max-width: 100%; max-height: 250px; border-radius: 20px;" id="imagem" alt="">
+            <h2 class="text-light text-center" id="nome_prod"><?php if(isset($nome)) { echo $nome; } ?></h2>
             <!-- Adicione um identificador único ao formulário -->
             <form action="adicionar_pedido.php" method="post" enctype="multipart/form-data" id="pedidoForm">
                 <div class="input-group d-flex" style="flex-direction: column;">
@@ -60,17 +85,18 @@
                 </div>
             </form>
             <form action="adicionar_pedido.php" method="post" class="form" enctype="multipart/form-data">
+                <input type="text" name="id" id="id" value="<?php echo $Id; ?>" hidden>
                 <div class="input-group">
                     <label for="cpf">CPF</label>
                     <input type="text" name="cpf_cli" id="cpf_cli" onkeypress="$(this).mask('000.000.000-00');" value="<?php echo $row_id['cpf'];?>" placeholder="" disabled required>
                 </div>
                 <div class="input-group">
                     <label for="descricao">Descrição</label>
-                    <input type="text" name="descricao" id="descricao" placeholder="" value="<?php echo $resumo; ?>" disabled required>
+                    <input type="text" name="descricao" id="descricao" placeholder="" value="" disabled required>
                 </div>
                 <div class="input-group">
                     <label for="preco">Preço</label>
-                    <input type="text" name="preco" id="preco" value="<?php echo $preco; ?>" placeholder="" disabled required>
+                    <input type="text" name="preco" id="preco" value="" placeholder="" disabled required>
                 </div>
                 <div class="input-group">
                     <label for="quantidade">Quantidade</label>
@@ -105,15 +131,16 @@
                         <form action="adicionar_pedido.php" method="post" enctype="multipart/form-data">
                             <div class="carousel-item <?php echo $activeClass; ?>" style="margin-left: 80px;">
                                 <div class="card card_destaque" style="width: 18rem; margin-right: 20px; margin-bottom: 20px; margin-top: 20px; flex: 0 0 calc(25% - 20px);">
-                                    <img src="../images/Fantasias/<?php echo $row['img_produto'];?>" class="card-img-top" style="max-height: 250px;" alt="<?php echo $row['imagem'];?>">
+                                    <input name="id_prod" id="id_prod" value="<?php echo $row['id_produto']; ?>" type="text" hidden>
+                                    <input type="text" name="imagem" value="<?php echo $row['img_produto'];?>" hidden><img src="../images/Fantasias/<?php echo $row['img_produto'];?>" class="card-img-top" style="max-height: 250px;" alt="<?php echo $row['img_produto'];?>">
                                     <div class="card-body">
                                         <input type="text" name="nome" id="nome" value="<?php echo $row['nome_produto'];?>" hidden>
                                         <h5 class="card-title"><?php echo $row['nome_produto'];?></h5>
-                                        <input type="text" name="resumo" id="resumo" value="<?php echo $row['resumo'];?>" hidden>
-                                        <p class="card-text"><?php echo $row['resumo'];?></p>
-                                        <input type="text" name="preco" id="preco" value="<?php echo $row['preco'];?>" hidden>
-                                        <p class="card-text">Preço: <?php echo $row['preco']; ?></p>
-                                        <?php if ($row['destaque'] == 'Sim'){ ?>
+                                        <input type="text" name="resumo" id="resumo" value="<?php echo $row['resumo_produto'];?>" hidden>
+                                        <p class="card-text"><?php echo $row['resumo_produto'];?></p>
+                                        <input type="text" name="preco" id="preco" value="<?php echo $row['preco_produto'];?>" hidden>
+                                        <p class="card-text">Preço: <?php echo $row['preco_produto']; ?></p>
+                                        <?php if ($row['destaque_produto'] == 'Sim'){ ?>
                                             <button type="button" class="btn" style="color: white;" disabled>DESTAQUE</button>
                                         <?php } ?>
                                         <button role="button" type="submit" name="card_prod" class="btn float-right" style="background-color: #f8741d;">Adicionar</button>
@@ -149,6 +176,9 @@
     <script>
         document.getElementById('descricao').value = '<?php echo $resumo; ?>';
         document.getElementById('preco').value = '<?php echo $preco; ?>';
+        document.getElementById('imagem').value = '<?php echo $imagem; ?>';
+        document.getElementById('nome_prod').value = '<?php echo $produto; ?>'
+        document.getElementById('id').value = '<?php echo $Id; ?>'
         // Feche o modal se necessário
         $('#modal_escolher').modal('hide');
     </script>
