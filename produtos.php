@@ -19,10 +19,10 @@
     <title>Produtos - Navegar</title>
 </head>
 <body id="fundo_index">
+    <?php include 'header.php';?>
     <!-- Background que faz efeito no fundo do site -->
     <img src="images/elementos/shape-bg.png" class="shape_bg">
     <!-- Header -->
-    <?php include 'header.php';?>
 
     <!-- Conteúdo -->
     <main id="produtos">
