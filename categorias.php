@@ -57,7 +57,7 @@
                             <div class="description">
                                 <div class="title">
                                     <p class="title">
-                                        <a href="detalhes.php?id=<?php echo $row_categoria['id_produto']; ?>" id="btnVer">
+                                        <a href="pesquisar_categoria.php" id="btnVer">
                                             <strong>Ver mais</strong>
                                         </a>
                                     </p>
