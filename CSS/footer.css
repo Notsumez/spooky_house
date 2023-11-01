@@ -1,0 +1,20 @@
+/* ============================== FOOTER =================================== */
+footer{
+    background-color: #181818;
+    padding: 50px;
+}
+
+.cor_txt_footer{
+    color: grey;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 10.5pt;
+}
+
+.cor_txt_footer:hover {
+    color: #f8741d;
+    -webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	text-decoration: none;
+}

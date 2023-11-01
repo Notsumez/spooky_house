@@ -283,82 +283,6 @@ a{
     opacity: 1; /* Torna a sobreposição visível quando o mouse passa por cima */
 }
 
-/* ============================== HEADER =================================== */
-#bg_nav {
-    background-color: transparent;
-    transition: background-color 0.3s ease;
-    z-index: 9999999;
-}
- 
-.dropdown-menu{
-    background-color: #292929;
-    border: 1px solid white;
-    border-radius: 20px;
-}
-
-.dropdown-item{
-    color: white;
-    width: 100%;
-}
-
-.dropdown-item:hover{
-    background-color: #f8741d;
-    border-radius: 20px;
-    color: white;
-}
-
-.fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999999;
-    background-color: #181818;
-}
-
-.btn_pesquisar {
-    font-size: 1.2rem;
-    padding: 0.5rem 1.5rem;
-    border: none;
-    outline: none;
-    border-radius: 0.4rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    background-color: rgb(14, 14, 26);
-    color: rgb(234, 234, 234);
-    font-weight: 700;
-    -webkit-transition: 0.6s;
-    transition: 0.6s;
-    -webkit-box-shadow: 0px 0px 60px #f8741d;
-            box-shadow: 0px 0px 60px #2b1069;
-    -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
-}
-  
-.btn_pesquisar:active {
-    scale: 0.92;
-}
-  
-.btn_pesquisar:hover {
-    background: rgb(253, 152, 21);
-    background: -webkit-gradient(linear, right top, left top, from(rgba(233, 136, 25, 0.681)), color-stop(60%, rgba(31, 215, 232, 0.873)));
-    background: linear-gradient(270deg, rgba(25, 5, 73, 0.681) 0%, rgba(248, 103, 18, 0.873) 60%);
-    color: rgb(42, 10, 78);
-}
-
-#bg_form_pesquisar{
-    background: transparent;
-    backdrop-filter: blur(15px);
-}
-
-#bg_form_pesquisar::placeholder {
-    color: white;
-  }
-
-#bg_form_pesquisar:focus {
-    color: white;
-  }
-  
-
 /* ============================== DESTAQUES =================================== */
 .card_destaque{
     margin-right: 20px;
@@ -436,23 +360,3 @@ a{
     color: #f8741d;
 }
 
-/* ============================== FOOTER =================================== */
-footer{
-    background-color: #181818;
-    padding: 50px;
-}
-
-.cor_txt_footer{
-    color: grey;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 10.5pt;
-}
-
-.cor_txt_footer:hover {
-    color: #f8741d;
-    -webkit-transition: all 0.3s ease;
-	-moz-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	transition: all 0.3s ease;
-	text-decoration: none;
-}

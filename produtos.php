@@ -15,6 +15,8 @@
     <!-- Link para CSS -->
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/card2.css">
+    <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/footer.css">
     <link rel="shortcut icon" href="images/Elementos/favicon.png" type="image/x-png">
     <title>Produtos - Navegar</title>
 </head>
