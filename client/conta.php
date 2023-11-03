@@ -102,6 +102,8 @@
     <!-- Link para o CSS -->
     <link rel="stylesheet" href="../CSS/input_cep.css">
     <link rel="stylesheet" href="../CSS/input.css">
+    <link rel="stylesheet" href="../CSS/header.css">
+    <link rel="stylesheet" href="../CSS/footer.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="shortcut icon" href="../images/Elementos/favicon.png" type="image/x-png">
     <title>Área do Cliente - <?php echo $row_conta['nome'];?> </title>
