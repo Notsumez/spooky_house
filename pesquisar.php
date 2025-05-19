@@ -73,7 +73,7 @@
                                 <h5 class="card-title"><?php echo $row_busca['nome'];?></h5>
                                 <p class="card-text"><?php echo $row_busca['resumo'];?></p>
                                 <p class="card-text">Preço: <?php echo $row_busca['preco']; ?></p>
-                                <a href="detalhes.php" class="btn" style="background-color: #f8741d;">Ver mais</a>
+                                <a href="detalhes.php?Id=<?php echo $row_busca['id']; ?>"  class="btn" style="background-color: #f8741d;">Ver mais</a>
                             </div>
                         </div>
                     <?php } while ($row_busca = $consulta->fetch_assoc()); ?>

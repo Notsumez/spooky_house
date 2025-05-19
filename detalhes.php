@@ -5,7 +5,9 @@
     $ID = $_GET['Id'];
     $select = $conn->query("SELECT *, CL.nome as nome_cli, CL.imagem as img_cli, P.nome as nome_produto, P.imagem as img_produto FROM Produtos P INNER JOIN Comentarios C ON C.id_produto = P.id INNER JOIN Clientes CL ON CL.id = C.id_cliente WHERE P.Id = '$ID'");
     $row_detalhes = $select->fetch_assoc();
-
+    if (!$row_detalhes) {
+        die("Produto não encontrado ou erro na consulta.");
+    }
 
 ?>
 <!DOCTYPE html>
